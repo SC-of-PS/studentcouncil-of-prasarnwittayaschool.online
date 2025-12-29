@@ -11,7 +11,7 @@
         body {
             font-family: 'Kanit', sans-serif;
             scroll-behavior: smooth;
-            overflow: hidden; /* ป้องกันการเลื่อนขณะกำลังโหลด */
+            overflow: hidden; /* Prevent scrolling while loading */
         }
         .bg-school-blue { background-color: #1e3a8a; }
         .text-school-blue { color: #1e3a8a; }
@@ -29,7 +29,7 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- ส่วนเพิ่มใหม่: Preloader Styles --- */
+        /* Preloader Styles */
         #preloader {
             position: fixed;
             top: 0;
@@ -74,27 +74,23 @@
             50% { opacity: 1; }
         }
 
-        @keyframes loading-bar {
+        @keyframes loading {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-        /* --------------------------- */
+
+        /* Animation for notice bar */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .animate-notice {
+            animation: pulse-soft 2s infinite;
+        }
 
         .dna-card {
             transition: all 0.3s ease;
             border: 1px solid rgba(30, 58, 138, 0.1);
-        }
-        
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        #mobile-menu.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
         }
 
         .garden-card {
@@ -123,24 +119,28 @@
             border: 0;
         }
 
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
         }
-        .animate-notice {
-            animation: pulse-soft 2s infinite;
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Preloader Screen (ส่วนเพิ่มใหม่) -->
+    <!-- Preloader Screen -->
     <div id="preloader">
         <div class="flex flex-col items-center">
             <img src="PSCC NO BG.png" alt="PSCC Logo" class="loader-logo" onerror="this.src='https://via.placeholder.com/100?text=PSCC'">
             <div class="loading-text uppercase text-sm">กำลังโหลดข้อมูล...</div>
             <div class="mt-4 w-48 h-1 bg-blue-900/50 rounded-full overflow-hidden relative">
-                <div class="absolute inset-0 bg-school-yellow animate-[loading-bar_2s_ease-in-out_infinite]"></div>
+                <div class="absolute inset-0 h-full bg-school-yellow animate-[loading_2s_ease-in-out_infinite]"></div>
             </div>
         </div>
     </div>
@@ -237,11 +237,12 @@
         </div>
     </section>
 
-    <!-- Heritage & Milestone Section -->
+    <!-- Heritage Section -->
     <section id="heritage" class="py-16 md:py-24 bg-slate-50 overflow-hidden border-t border-slate-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h3 class="text-blue-900 text-3xl md:text-5xl font-bold mb-4 italic">หมุดหมายสำคัญใน 45 ปี</h3>
+                <p class="text-slate-500">กว่าจะมาเป็นประสารวิทยาในวันนี้ เรารวมใจสร้างมาอย่างยาวนาน</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
@@ -265,36 +266,108 @@
 
             <div class="max-w-4xl mx-auto mt-20">
                 <div class="video-container border-4 border-white">
-                    <iframe 
-                        src="https://www.youtube.com/embed/1KF5YXDv3mA" 
-                        title="PRASARNWITTAYA SCHOOL VIDEO" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://www.youtube.com/embed/1KF5YXDv3mA" title="PRASARNWITTAYA SCHOOL VIDEO" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8">
+    <!-- DNA Section -->
+    <section id="dna" class="py-16 md:py-24 bg-white border-y border-slate-200">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-slate-500 text-xs tracking-widest uppercase">
+            <h2 class="text-2xl md:text-4xl font-bold text-blue-900 mb-10">DNA ของ "ลูกประสารวิทยา"</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 shadow-sm">
+                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-hands-helping"></i></div>
+                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">ความกตัญญูและวินัย</h4>
+                    <p class="text-slate-600 text-sm">รากฐานสำคัญที่ทำให้ศิษย์เก่าของเราเป็นที่ยอมรับในสังคม</p>
+                </div>
+                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-blue-50">
+                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-home"></i></div>
+                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">สายสัมพันธ์ครอบครัว</h4>
+                    <p class="text-slate-600 text-sm">ความใกล้ชิดที่มากกว่าสถานศึกษา แต่คือบ้านที่อบอุ่นสำหรับทุกคน</p>
+                </div>
+                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 shadow-sm">
+                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-lightbulb"></i></div>
+                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">ภูมิปัญญาสีคิ้ว</h4>
+                    <p class="text-slate-600 text-sm">การประยุกต์ใช้ต้นทุนทางวัฒนธรรมท้องถิ่นสู่สากล</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Early Childhood (Oval Building) -->
+    <section id="early-childhood" class="py-16 md:py-24 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-5xl font-black text-blue-900">อาคารวงรี: <span class="text-school-yellow">สถาปัตยกรรมแห่งการค้นพบ</span></h3>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+                <div class="lg:w-1/2 w-full">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-64 md:h-[400px] object-cover" alt="อาคารวงรี">
+                    </div>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
+                        <h5 class="font-bold text-blue-900 mb-2">ความไร้ขอบเขต</h5>
+                        <p class="text-xs text-slate-500">สื่อถึงความคิดสร้างสรรค์ที่ไม่สิ้นสุดของเด็กปฐมวัย</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
+                        <h5 class="font-bold text-blue-900 mb-2">Slide to Learn</h5>
+                        <p class="text-xs text-slate-500">เปลี่ยนการเคลื่อนที่ให้เป็นความสนุกและประสบการณ์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garden Section -->
+    <section id="beyond-classroom" class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h3 class="text-3xl md:text-5xl font-black text-center mb-12">สวนชีวิตชีวา: <span class="text-school-yellow">พื้นที่ 13 ไร่</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] border border-white/20">
+                    <h4 class="text-2xl font-bold text-school-yellow mb-6">ห้องทดลองที่มีชีวิต</h4>
+                    <p class="text-blue-100 leading-relaxed">พื้นที่สวนกว้างขวางถูกออกแบบให้เป็นแหล่งเรียนรู้เชิงนิเวศ นักเรียนจะได้สัมผัสธรรมชาติและฝึกทักษะชีวิตผ่านการลงมือทำจริง</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="garden-card bg-white/5 p-6 rounded-3xl border border-white/10 text-center">
+                        <i class="fas fa-seedling text-3xl text-green-400 mb-4"></i>
+                        <h5 class="font-bold text-white text-sm">Eco-Learning</h5>
+                    </div>
+                    <div class="garden-card bg-white/5 p-6 rounded-3xl border border-white/10 text-center">
+                        <i class="fas fa-microscope text-3xl text-blue-400 mb-4"></i>
+                        <h5 class="font-bold text-white text-sm">Bio-Diversity</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8 border-t border-white/5">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500 text-xs tracking-widest uppercase mb-4">
                 &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL - 45 TH BEYOND THE CLASSROOM
             </p>
+            <div class="text-slate-400 text-[10px] space-y-2">
+                <p><i class="fas fa-map-marker-alt mr-2 text-school-yellow"></i> อำเภอสีคิ้ว จังหวัดนครราชสีมา 30140</p>
+                <p><i class="fas fa-envelope mr-2 text-school-yellow"></i> prasarn-student-council@studentcouncil-of-prasarnwittayaschool.online</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // ระบบ Preloader
+        // Handle Preloader
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.classList.add('fade-out');
-                document.body.style.overflow = 'auto'; // เปิดให้เลื่อนหน้าจอได้
-            }, 1500); // หน่วงเวลา 1.5 วินาทีเพื่อให้เห็นโลโก้หมุน
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }, 1500); 
         });
 
-        // ควบคุมเมนูมือถือ
+        // Navigation Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -315,7 +388,7 @@
             });
         });
 
-        // เลื่อนหน้าจอแบบนุ่มนวล
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
