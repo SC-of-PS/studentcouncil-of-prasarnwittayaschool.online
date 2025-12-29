@@ -11,6 +11,7 @@
         body {
             font-family: 'Kanit', sans-serif;
             scroll-behavior: smooth;
+            overflow: hidden; /* ป้องกันการเลื่อนขณะกำลังโหลด */
         }
         .bg-school-blue { background-color: #1e3a8a; }
         .text-school-blue { color: #1e3a8a; }
@@ -27,6 +28,57 @@
             background: linear-gradient(45deg, #d4af37, #f7e08a);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
+
+        /* --- ส่วนเพิ่มใหม่: Preloader Styles --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1e3a8a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: 100px;
+            animation: spin-slow 3s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: #facc15;
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: pulse-text 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes loading-bar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        /* --------------------------- */
 
         .dna-card {
             transition: all 0.3s ease;
@@ -55,7 +107,7 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 2rem;
@@ -71,7 +123,6 @@
             border: 0;
         }
 
-        /* Animation for notice bar */
         @keyframes pulse-soft {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; }
@@ -82,6 +133,17 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
+
+    <!-- Preloader Screen (ส่วนเพิ่มใหม่) -->
+    <div id="preloader">
+        <div class="flex flex-col items-center">
+            <img src="PSCC NO BG.png" alt="PSCC Logo" class="loader-logo" onerror="this.src='https://via.placeholder.com/100?text=PSCC'">
+            <div class="loading-text uppercase text-sm">กำลังโหลดข้อมูล...</div>
+            <div class="mt-4 w-48 h-1 bg-blue-900/50 rounded-full overflow-hidden relative">
+                <div class="absolute inset-0 bg-school-yellow animate-[loading-bar_2s_ease-in-out_infinite]"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Top Maintenance Notice Bar -->
     <div class="bg-amber-100 border-b border-amber-200 py-2 px-4 relative z-[110]">
@@ -96,7 +158,6 @@
     <!-- Navigation -->
     <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo Area -->
             <div class="flex items-center space-x-3">
                 <div class="bg-white p-1 rounded-full relative shadow-md shrink-0">
                     <img src="PSCC NO BG.png" alt="โลโก้สภานักเรียน" class="w-10 h-10 md:w-12 md:h-12 object-contain" onerror="this.src='https://via.placeholder.com/50?text=PSCC'">
@@ -108,7 +169,6 @@
                 </div>
             </div>
             
-            <!-- Desktop Menu -->
             <div class="hidden lg:flex space-x-6 font-medium text-sm">
                 <a href="#home" class="hover:text-school-yellow transition border-b-2 border-transparent hover:border-school-yellow pb-1">หน้าแรก</a>
                 <a href="#heritage" class="hover:text-school-yellow transition border-b-2 border-transparent hover:border-school-yellow pb-1">เส้นทาง 45 ปี</a>
@@ -119,18 +179,15 @@
                 <a href="#contact" class="hover:text-school-yellow transition border-b-2 border-transparent hover:border-school-yellow pb-1">ติดต่อ</a>
             </div>
 
-            <!-- Mobile Hamburger Button -->
             <button id="menu-btn" class="lg:hidden text-white focus:outline-none p-2" aria-label="Toggle Menu">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
 
-            <!-- CTA Button (Desktop) -->
             <a href="https://www.schoolbright.co/login" target="_blank" rel="noopener noreferrer" class="hidden lg:flex bg-school-yellow text-blue-900 px-5 py-2 rounded-full font-bold text-xs hover:bg-white transition items-center shadow-lg">
                 <i class="fas fa-rocket mr-2"></i> SCHOOL BRIGHT
             </a>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="lg:hidden absolute top-full left-0 w-full bg-school-blue border-t border-white/10 shadow-2xl overflow-hidden">
             <div class="flex flex-col p-6 space-y-4 font-medium">
                 <a href="#home" class="mobile-link text-white hover:text-school-yellow py-2 border-b border-white/5">หน้าแรก</a>
@@ -185,41 +242,28 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h3 class="text-blue-900 text-3xl md:text-5xl font-bold mb-4 italic">หมุดหมายสำคัญใน 45 ปี</h3>
-                <p class="text-slate-500">กว่าจะมาเป็นประสารวิทยาในวันนี้ เราผ่านการบ่มเพาะมาอย่างยาวนาน</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
-                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-blue">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-blue text-center">
                     <span class="text-3xl font-black text-school-blue opacity-20">1980</span>
-                    <h5 class="font-bold text-blue-900 mt-2">The Beginning</h5>
-                    <p class="text-xs text-slate-500 mt-2">ก่อตั้งโรงเรียนด้วยปณิธานสร้างการศึกษาที่มีคุณภาพในท้องถิ่นสีคิ้ว</p>
+                    <h5 class="font-bold text-blue-900 mt-2">ก่อตั้งโรงเรียน</h5>
                 </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-yellow">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-yellow text-center">
                     <span class="text-3xl font-black text-school-yellow opacity-40">2000</span>
-                    <h5 class="font-bold text-blue-900 mt-2">Expansion Era</h5>
-                    <p class="text-xs text-slate-500 mt-2">ขยายอาคารเรียนและพัฒนาระบบการสอนสู่มาตรฐานระดับจังหวัด</p>
+                    <h5 class="font-bold text-blue-900 mt-2">ขยายโอกาส</h5>
                 </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-blue">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-blue text-center">
                     <span class="text-3xl font-black text-school-blue opacity-20">2015</span>
-                    <h5 class="font-bold text-blue-900 mt-2">Digital Shift</h5>
-                    <p class="text-xs text-slate-500 mt-2">เริ่มต้นนำเทคโนโลยีมาใช้ในห้องเรียนและระบบบริหารจัดการ</p>
+                    <h5 class="font-bold text-blue-900 mt-2">ยุคดิจิทัล</h5>
                 </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-yellow">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border-t-4 border-school-yellow text-center">
                     <span class="text-3xl font-black text-school-yellow opacity-40">2024</span>
-                    <h5 class="font-bold text-blue-900 mt-2">Beyond Classroom</h5>
-                    <p class="text-xs text-slate-500 mt-2">ก้าวสู่การเรียนรู้ที่ไร้พรมแดน เน้นทักษะชีวิตและจิตวิญญาณชุมชน</p>
+                    <h5 class="font-bold text-blue-900 mt-2">ก้าวสู่อนาคต</h5>
                 </div>
             </div>
 
-            <!-- Video Section - Fixed -->
             <div class="max-w-4xl mx-auto mt-20">
-                <div class="text-center mb-8">
-                    <h4 class="text-xl md:text-2xl font-bold text-school-blue flex items-center justify-center">
-                        <i class="fab fa-youtube text-red-600 mr-3"></i> 
-                        วีดิทัศน์แนะนำโรงเรียนประสารวิทยา
-                    </h4>
-                    <div class="h-1 w-12 bg-school-yellow mx-auto mt-2 rounded-full"></div>
-                </div>
                 <div class="video-container border-4 border-white">
                     <iframe 
                         src="https://www.youtube.com/embed/1KF5YXDv3mA" 
@@ -232,215 +276,25 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/3">
-                    <h3 class="text-3xl md:text-5xl font-black text-blue-900 leading-tight">โครงการที่<br><span class="text-school-yellow italic">เปลี่ยนชีวิต</span>นักเรียน</h3>
-                    <p class="text-slate-600 mt-6 leading-relaxed">
-                        เราไม่ได้แค่สอนให้สอบผ่าน แต่เราสร้างพื้นที่ให้ "ลองผิดลองถูก" เพื่อหาตัวตนที่แท้จริงของนักเรียนแต่ละคน ผ่านโครงการริเริ่มที่หลากหลาย
-                    </p>
-                    <div class="mt-8 space-y-4">
-                        <div class="flex items-center space-x-4 p-4 bg-slate-50 rounded-2xl">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="font-bold text-blue-900">100% นักเรียนมีโครงการส่วนตัว</span>
-                        </div>
-                        <div class="flex items-center space-x-4 p-4 bg-slate-50 rounded-2xl">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="font-bold text-blue-900">50+ พันธมิตรทางการศึกษา</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Prasarn Innovators">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
-                            <h4 class="text-white text-xl font-bold mb-2">Prasarn Innovators</h4>
-                            <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                พื้นที่ปล่อยของสำหรับนักประดิษฐ์รุ่นเยาว์ ตั้งแต่หุ่นยนต์ไปจนถึง Application
-                            </p>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Global Citizens">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
-                            <h4 class="text-white text-xl font-bold mb-2">Global Citizens</h4>
-                            <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                พัฒนาทักษะภาษาอังกฤษและวัฒนธรรมผ่านโครงการแลกเปลี่ยนออนไลน์กับเพื่อนนานาชาติ
-                            </p>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Social Impact Team">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
-                            <h4 class="text-white text-xl font-bold mb-2">Social Impact Team</h4>
-                            <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                ทีมสภานักเรียนที่ออกแบบโครงการเพื่อแก้ปัญหาจริงในชุมชนรอบโรงเรียน
-                            </p>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1454165833767-017546954de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Young Entrepreneurs">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
-                            <h4 class="text-white text-xl font-bold mb-2">Young Entrepreneurs</h4>
-                            <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                เรียนรู้วิธีการทำธุรกิจและการตลาดผ่านกิจกรรมตลาดนัดประสารวิทยา
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DNA Section -->
-    <section id="dna" class="py-16 md:py-24 bg-slate-50 border-y border-slate-200">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl md:text-4xl font-bold text-blue-900 mb-10">DNA ของ "ลูกประสารวิทยา"</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-white shadow-sm">
-                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-hands-helping"></i></div>
-                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">ความกตัญญูและวินัย</h4>
-                    <p class="text-slate-600 text-sm">รากฐานสำคัญที่ทำให้ศิษย์เก่าของเราเป็นที่ยอมรับในสังคม</p>
-                </div>
-                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-blue-50">
-                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-home"></i></div>
-                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">สายสัมพันธ์ครอบครัว</h4>
-                    <p class="text-slate-600 text-sm">ความใกล้ชิดที่มากกว่าสถานศึกษา แต่คือบ้านที่อบอุ่นสำหรับทุกคน</p>
-                </div>
-                <div class="dna-card p-6 md:p-10 rounded-2xl md:rounded-3xl bg-white shadow-sm">
-                    <div class="text-3xl md:text-4xl mb-4 text-school-blue"><i class="fas fa-lightbulb"></i></div>
-                    <h4 class="text-lg md:text-xl font-bold mb-2 text-blue-900">ภูมิปัญญาสีคิ้ว</h4>
-                    <p class="text-slate-600 text-sm">การประยุกต์ใช้ต้นทุนทางวัฒนธรรมท้องถิ่นสู่สากล</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Early Childhood -->
-    <section id="early-childhood" class="py-16 md:py-24 bg-white overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12 md:mb-20">
-                <span class="text-school-blue font-bold tracking-widest text-xs uppercase">Discovery Center</span>
-                <h3 class="text-3xl md:text-5xl font-black text-blue-900 mt-4 mb-4">อาคารวงรี: <span class="text-school-yellow">สถาปัตยกรรมแห่งการค้นพบ</span></h3>
-                <p class="text-slate-600 px-4">ออกแบบมาเพื่อรองรับธรรมชาติการเรียนรู้ของเด็กปฐมวัยโดยเฉพาะ</p>
-            </div>
-
-            <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-                <div class="lg:w-1/2 w-full px-4 md:px-0">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl relative">
-                        <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             class="w-full h-64 md:h-[500px] object-cover" alt="อาคารวงรี">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex items-end p-6 md:p-12">
-                            <p class="text-white text-base md:text-xl font-bold">เส้นโค้งแห่งความโอบอุ้มและความปลอดภัย</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full px-4 md:px-0">
-                    <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
-                        <i class="fas fa-infinity text-school-blue mb-4 block"></i>
-                        <h5 class="font-bold text-blue-900 mb-2">ความไร้ขอบเขต</h5>
-                        <p class="text-xs text-slate-500">สื่อถึงความคิดสร้างสรรค์ที่ไม่สิ้นสุด</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
-                        <i class="fas fa-skating text-school-blue mb-4 block"></i>
-                        <h5 class="font-bold text-blue-900 mb-2">Slide to Learn</h5>
-                        <p class="text-xs text-slate-500">เปลี่ยนบันไดเป็นสไลเดอร์ให้การเรียนรู้สนุกขึ้น</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
-                        <i class="fas fa-sun text-school-blue mb-4 block"></i>
-                        <h5 class="font-bold text-blue-900 mb-2">แสงและอากาศ</h5>
-                        <p class="text-xs text-slate-500">สุขภาวะที่ดีเพื่อสมาธิในการเรียน</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border-l-4 border-school-yellow">
-                        <i class="fas fa-qrcode text-school-blue mb-4 block"></i>
-                        <h5 class="font-bold text-blue-900 mb-2">Digital Mapping</h5>
-                        <p class="text-xs text-slate-500">สแกน QR เพื่อดูผลงานเด็กๆ ในพื้นที่จริง</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Garden (13 Rai) -->
-    <section id="beyond-classroom" class="py-16 md:py-24 bg-slate-900 text-white overflow-hidden relative">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] opacity-20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6">
-                <div class="max-w-2xl text-center md:text-left">
-                    <span class="text-school-yellow font-bold tracking-[0.2em] text-xs uppercase bg-white/10 px-3 py-1 rounded-full">Eco-Learning Space</span>
-                    <h3 class="text-3xl md:text-5xl font-black text-white mt-4 mb-4">สวนชีวิตชีวา: <span class="text-school-yellow italic text-2xl md:text-4xl block md:inline">พื้นที่ 13 ไร่แห่งการเรียนรู้</span></h3>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[2rem] border border-white/20">
-                    <h4 class="text-2xl font-bold text-school-yellow mb-6 flex items-center">
-                        <i class="fas fa-seedling mr-3"></i> ปรัชญาการเรียนรู้นอกห้องเรียน
-                    </h4>
-                    <div class="space-y-4 text-blue-100 leading-relaxed">
-                        <p>พื้นที่ 13 ไร่ของโรงเรียนประสารวิทยา ไม่ได้ถูกออกแบบมาเพื่อเป็นเพียงพื้นที่สีเขียว แต่คือ **"ห้องทดลองที่มีชีวิต"** ที่เชื่อมโยงบทเรียนจากตำราเข้ากับวิถีชีวิตจริงของชาวสีคิ้ว</p>
-                        <p>ที่นี่นักเรียนจะได้ฝึกทักษะการสังเกต การแก้ปัญหา และความรับผิดชอบ ผ่านการดูแลระบบนิเวศจำลอง ตั้งแต่การปลูกพืชผักสวนครัวไปจนถึงการศึกษาความหลากหลายทางชีวภาพ</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="garden-card bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-green-900/40">
-                            <i class="fas fa-mountain"></i>
-                        </div>
-                        <h5 class="font-bold text-white mb-2">ห้องเรียนสีคิ้ว</h5>
-                        <p class="text-xs text-blue-200 opacity-70 leading-relaxed">ศึกษาธรณีวิทยาและพันธุ์ไม้พื้นถิ่นของอำเภอสีคิ้วที่หาดูยาก</p>
-                    </div>
-                    <div class="garden-card bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-900/40">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h5 class="font-bold text-white mb-2">วิทยาศาสตร์มีชีวิต</h5>
-                        <p class="text-xs text-blue-200 opacity-70 leading-relaxed">ทดลองเรื่องการสังเคราะห์แสง ระบบน้ำ และแมลงในธรรมชาติ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
-                <div class="md:col-span-1">
-                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
-                        <img src="PSCC NO BG.png" alt="PSCC" class="w-12 h-12" onerror="this.src='https://via.placeholder.com/50?text=PSCC'">
-                        <h2 class="text-xl font-black">โรงเรียนประสารวิทยา</h2>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        มุ่งมั่นสร้างทรัพยากรบุคคลที่มีคุณภาพเคียงคู่สังคมสีคิ้วมากว่า 45 ปี ผ่านแนวคิด "การเรียนรู้ที่ไร้พรมแดน"
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-school-yellow mb-6 uppercase tracking-wider">นำทาง</h3>
-                    <ul class="space-y-3 text-slate-400 text-sm">
-                        <li><a href="#home">หน้าแรก</a></li>
-                        <li><a href="#projects">โครงการพิเศษ</a></li>
-                        <li><a href="#early-childhood">อาคารวงรี</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-school-yellow mb-6 uppercase tracking-wider">ติดต่อเรา</h3>
-                    <div class="text-slate-400 text-sm space-y-3">
-                        <p class="flex items-start justify-center md:justify-start"><i class="fas fa-map-marker-alt mr-3 mt-1 text-school-yellow"></i> <span>เขตพื้นที่อำเภอสีคิ้ว จังหวัดนครราชสีมา 30140</span></p>
-                        <p class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope mr-3 text-school-yellow"></i> <span class="break-all">prasarn-student-council@studentcouncil-of-prasarnwittayaschool.online</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/5 pt-8 text-center text-slate-500 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] font-medium">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500 text-xs tracking-widest uppercase">
                 &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL - 45 TH BEYOND THE CLASSROOM
-            </div>
+            </p>
         </div>
     </footer>
 
     <script>
+        // ระบบ Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                document.body.style.overflow = 'auto'; // เปิดให้เลื่อนหน้าจอได้
+            }, 1500); // หน่วงเวลา 1.5 วินาทีเพื่อให้เห็นโลโก้หมุน
+        });
+
+        // ควบคุมเมนูมือถือ
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -461,6 +315,7 @@
             });
         });
 
+        // เลื่อนหน้าจอแบบนุ่มนวล
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
