@@ -33,7 +33,6 @@
             border: 1px solid rgba(30, 58, 138, 0.1);
         }
         
-        /* Mobile Menu Animation */
         #mobile-menu {
             transition: all 0.3s ease-in-out;
             transform: translateY(-100%);
@@ -61,6 +60,7 @@
             overflow: hidden;
             border-radius: 2rem;
             box-shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.25);
+            background-color: #000;
         }
         .video-container iframe {
             position: absolute;
@@ -70,9 +70,28 @@
             height: 100%;
             border: 0;
         }
+
+        /* Animation for notice bar */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .animate-notice {
+            animation: pulse-soft 2s infinite;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
+
+    <!-- Top Maintenance Notice Bar -->
+    <div class="bg-amber-100 border-b border-amber-200 py-2 px-4 relative z-[110]">
+        <div class="container mx-auto flex items-center justify-center text-center">
+            <i class="fas fa-tools text-amber-600 mr-2 animate-notice"></i>
+            <p class="text-amber-900 text-[10px] md:text-xs font-medium">
+                ขออภัยในความไม่สะดวก: เว็บไซต์ยังไม่เสถียร อยู่ในระหว่างการปรับปรุง เพื่อประสบการณ์ที่ดียิ่งขึ้น
+            </p>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
@@ -106,7 +125,7 @@
             </button>
 
             <!-- CTA Button (Desktop) -->
-            <a href="#school-bright" class="hidden lg:flex bg-school-yellow text-blue-900 px-5 py-2 rounded-full font-bold text-xs hover:bg-white transition items-center shadow-lg">
+            <a href="https://www.schoolbright.co/login" target="_blank" rel="noopener noreferrer" class="hidden lg:flex bg-school-yellow text-blue-900 px-5 py-2 rounded-full font-bold text-xs hover:bg-white transition items-center shadow-lg">
                 <i class="fas fa-rocket mr-2"></i> SCHOOL BRIGHT
             </a>
         </div>
@@ -122,7 +141,7 @@
                 <a href="#beyond-classroom" class="mobile-link text-white hover:text-school-yellow py-2 border-b border-white/5">สวนชีวิตชีวา</a>
                 <a href="#contact" class="mobile-link text-white hover:text-school-yellow py-2 border-b border-white/5">ติดต่อเรา</a>
                 <div class="pt-4">
-                    <a href="#school-bright" class="mobile-link block bg-school-yellow text-blue-900 text-center py-3 rounded-xl font-bold">
+                    <a href="https://www.schoolbright.co/login" target="_blank" rel="noopener noreferrer" class="mobile-link block bg-school-yellow text-blue-900 text-center py-3 rounded-xl font-bold">
                         <i class="fas fa-rocket mr-2"></i> เข้าสู่ระบบ SCHOOL BRIGHT
                     </a>
                 </div>
@@ -192,10 +211,10 @@
                 </div>
             </div>
 
-            <!-- Video Section -->
+            <!-- Video Section - Fixed -->
             <div class="max-w-4xl mx-auto mt-20">
                 <div class="text-center mb-8">
-                    <h4 class="text-xl md:text-2xl font-bold text-blue-900 flex items-center justify-center">
+                    <h4 class="text-xl md:text-2xl font-bold text-school-blue flex items-center justify-center">
                         <i class="fab fa-youtube text-red-600 mr-3"></i> 
                         วีดิทัศน์แนะนำโรงเรียนประสารวิทยา
                     </h4>
@@ -234,9 +253,8 @@
                     </div>
                 </div>
                 <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Project Card 1 -->
                     <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Prasarn Innovators">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
                             <h4 class="text-white text-xl font-bold mb-2">Prasarn Innovators</h4>
                             <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -244,9 +262,8 @@
                             </p>
                         </div>
                     </div>
-                    <!-- Project Card 2 -->
                     <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Global Citizens">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
                             <h4 class="text-white text-xl font-bold mb-2">Global Citizens</h4>
                             <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -254,9 +271,8 @@
                             </p>
                         </div>
                     </div>
-                    <!-- Project Card 3 -->
                     <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Social Impact Team">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
                             <h4 class="text-white text-xl font-bold mb-2">Social Impact Team</h4>
                             <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -264,9 +280,8 @@
                             </p>
                         </div>
                     </div>
-                    <!-- Project Card 4 -->
                     <div class="group relative overflow-hidden rounded-[2rem] shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1454165833767-017546954de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1454165833767-017546954de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110" alt="Young Entrepreneurs">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/40 to-transparent p-8 flex flex-col justify-end">
                             <h4 class="text-white text-xl font-bold mb-2">Young Entrepreneurs</h4>
                             <p class="text-blue-100 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -303,7 +318,7 @@
         </div>
     </section>
 
-    <!-- Early Childhood & Oval Building -->
+    <!-- Early Childhood -->
     <section id="early-childhood" class="py-16 md:py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12 md:mb-20">
@@ -387,36 +402,10 @@
                     </div>
                 </div>
             </div>
-
-            <!-- New Beyond Section -->
-            <div class="mt-20 border-t border-white/10 pt-16">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-school-yellow">Beyond Performance</h3>
-                    <p class="text-blue-200">สถิติและความสำเร็จที่สะท้อนถึงการเติบโตอย่างยั่งยืน</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-black text-white mb-2">95%</div>
-                        <div class="text-[10px] md:text-xs text-school-yellow uppercase tracking-widest">ความพึงพอใจนักเรียน</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-black text-white mb-2">15+</div>
-                        <div class="text-[10px] md:text-xs text-school-yellow uppercase tracking-widest">รางวัลนวัตกรรมดีเด่น</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-black text-white mb-2">8k</div>
-                        <div class="text-[10px] md:text-xs text-school-yellow uppercase tracking-widest">ศิษย์เก่าในเครือข่าย</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-black text-white mb-2">45</div>
-                        <div class="text-[10px] md:text-xs text-school-yellow uppercase tracking-widest">ปีแห่งความเชื่อมั่น</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Footer / Contact Section -->
+    <!-- Footer -->
     <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
@@ -452,7 +441,6 @@
     </footer>
 
     <script>
-        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -464,7 +452,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Close menu when clicking a link
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -474,7 +461,6 @@
             });
         });
 
-        // Smooth Scroll with Offset for Mobile Header
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
