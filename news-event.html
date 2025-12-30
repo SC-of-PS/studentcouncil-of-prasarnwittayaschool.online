@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สภานักเรียนโรงเรียนประสารวิทยา | 45th Anniversary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-school-blue { background-color: #1e3a8a; }
+        .text-school-blue { color: #1e3a8a; }
+        .bg-school-yellow { background-color: #facc15; }
+        .text-school-yellow { color: #facc15; }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anniversary-badge {
+            background: linear-gradient(45deg, #d4af37, #f7e08a);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .bank-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-title-shadow {
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #mobile-menu {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 600px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
+        <div class="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white p-1 rounded-full shadow-md shrink-0">
+                        <img src="image_87828e.png" alt="School Logo" class="w-10 h-10 object-contain" onerror="this.src='https://via.placeholder.com/40?text=PS'">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-[10px] md:text-sm tracking-tight leading-tight text-white">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
+                        <span class="text-[8px] md:text-[10px] text-school-yellow opacity-90 font-light uppercase tracking-wider">Student Council of Prasarnwittaya School (2024)</span>
+                    </div>
+                </div>
+                <!-- Mobile Toggle -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="nav-links" class="hidden md:flex items-center space-x-4 md:space-x-6">
+                <a href="index.html" class="text-xs md:text-sm hover:text-school-yellow transition uppercase font-semibold flex items-center gap-1">
+                    <i class="fas fa-chevron-left text-[10px]"></i> GO BACK
+                </a>
+                <div class="h-4 w-[1px] bg-slate-600 hidden md:block"></div>
+                <a href="#news-section" class="hover:text-school-yellow transition text-school-yellow border-b-2 border-school-yellow pb-1 font-medium text-sm md:text-base whitespace-nowrap">
+                    NEWS/EVENT
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="md:hidden bg-blue-950 px-4 overflow-hidden transition-all duration-300">
+            <div class="flex flex-col py-4 space-y-4 text-center">
+                <a href="index.html" class="text-white hover:text-school-yellow font-bold uppercase py-2 border-b border-white/10">GO BACK</a>
+                <a href="#news-section" class="text-school-yellow hover:text-white font-bold py-2 uppercase">NEWS/EVENT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-gradient text-white py-20 px-4 text-center">
+        <div class="container mx-auto max-w-5xl">
+            <div class="mb-10 flex justify-center">
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 inline-flex flex-col items-center">
+                    <img src="image_87828e.png" alt="โลโก้โรงเรียน" class="w-24 h-24 object-contain mb-4 animate-pulse" onerror="this.src='https://via.placeholder.com/100?text=PS'">
+                    <!-- Updated Badge text -->
+                    <span class="anniversary-badge text-blue-900 px-6 py-2 rounded-full font-black text-xs tracking-[0.2em] uppercase">
+                        45TH YEARS BEYOND THE CLASSROOM
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Updated Titles -->
+            <h2 class="text-4xl md:text-7xl font-black mb-4 leading-tight hero-title-shadow uppercase italic">
+                NEWS/EVENT
+            </h2>
+            <h3 class="text-2xl md:text-4xl font-bold text-school-yellow mb-8 hero-title-shadow uppercase tracking-widest">
+                ข่าวสาร/กิจกรรม
+            </h3>
+            
+            <div class="h-1 w-32 bg-school-yellow mx-auto mb-10 rounded-full"></div>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#news-section" class="bg-school-yellow text-blue-900 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-2xl hover:scale-105">
+                    เข้าสู่เนื้อหา <i class="fas fa-chevron-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Sections (News/Event) -->
+    <section id="news-section" class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="text-school-blue font-bold tracking-[0.3em] uppercase mb-4 block">Our Spirit</span>
+                <h3 class="text-4xl md:text-5xl font-black text-blue-900 mb-4">NEWS / EVENT</h3>
+                <div class="h-1.5 w-24 bg-school-yellow mx-auto rounded-full"></div>
+            </div>
+
+            <!-- News/Events Grid -->
+            <div class="space-y-20">
+                <!-- Event Card -->
+                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl group min-h-[500px] flex items-end">
+                    <div class="absolute inset-0 z-0">
+                        <img src="45year.jpg" alt="45 ปี คืนสู่เหย้า" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/60 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 p-8 md:p-16 w-full text-white">
+                        <div class="inline-block bg-school-yellow text-blue-900 px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest mb-6 italic">NEWS / EVENT</div>
+                        <h4 class="text-3xl md:text-5xl font-black mb-6 leading-tight uppercase">"45 ปี คืนสู่เหย้าชาวประสาร"</h4>
+                        <div class="flex flex-wrap gap-8 mb-10 text-sm">
+                            <div class="flex items-center space-x-3"><i class="fas fa-calendar text-school-yellow"></i> <span>17 ม.ค. 2569</span></div>
+                            <div class="flex items-center space-x-3"><i class="fas fa-map-marker-alt text-school-yellow"></i> <span>โรงเรียนประสารวิทยา</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merit Event Card -->
+                <div class="bg-slate-50 rounded-[3rem] overflow-hidden shadow-xl border border-slate-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="relative h-64 lg:h-auto">
+                            <img src="45year mo.jpg" alt="ทอดผ้าป่าเพื่อการศึกษา" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                        <div class="p-8 md:p-14">
+                            <h4 class="text-2xl font-black text-blue-900 mb-4 uppercase italic">ร่วมทอดผ้าป่าเพื่อการศึกษา</h4>
+                            <p class="text-slate-600 mb-8 leading-relaxed">เพื่อจัดซื้ออุปกรณ์วงดุริยางค์ สนับสนุนศักยภาพนักเรียน ในโอกาสครบรอบ 45 ปี</p>
+                            
+                            <div class="bank-card p-6 rounded-[2rem] shadow-inner">
+                                <div class="flex items-center gap-6">
+                                    <div class="w-20 h-20 bg-white p-2 rounded-2xl shadow-md shrink-0">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY:1388049797" alt="QR Donation" class="w-full h-full object-contain">
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-green-600 uppercase">ธนาคารกสิกรไทย</p>
+                                        <h5 class="text-lg font-black text-blue-900">138-8-04979-7</h5>
+                                        <p class="text-xs font-bold text-slate-700">โรงเรียนประสารวิทยา</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section id="vdo-section" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-left mb-12">
+                <h3 class="text-3xl font-black text-blue-900 uppercase italic mb-3">GALLERY & HIGHLIGHTS</h3>
+                <p class="text-slate-600 font-medium">ความประทับใจผ่านมุมกล้อง</p>
+            </div>
+            <div class="video-container group">
+                <iframe src="https://www.youtube.com/embed/1KF5YXDv3mA" title="Prasarnwittaya Highlights" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-8">
+                <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 p-2 shadow-lg overflow-hidden">
+                    <img src="image_87828e.png" alt="Footer Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/60?text=PS'">
+                </div>
+                <h4 class="font-bold text-lg md:text-xl uppercase tracking-wider text-school-yellow">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
+                <p class="text-slate-300 text-xs md:text-sm mt-1 font-light italic uppercase tracking-widest">Student Council of Prasarnwittaya School (2024)</p>
+                <p class="text-slate-400 text-sm mt-4">162/5 หมู่ ที่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-xl">
+                <a href="#" class="hover:text-school-yellow transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-school-yellow transition transform hover:scale-110"><i class="fab fa-line"></i></a>
+                <a href="#" class="hover:text-school-yellow transition transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="border-t border-slate-800 pt-8">
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-medium leading-relaxed">
+                    &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024) ALL RIGHTS RESERVED
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
