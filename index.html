@@ -112,11 +112,6 @@
             border: 0;
         }
 
-        .glass-nav {
-            backdrop-filter: blur(10px);
-            background-color: rgba(30, 58, 138, 0.95);
-        }
-
         .section-pattern {
             background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
             background-size: 24px 24px;
@@ -148,11 +143,6 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
-
-        /* News Section Special Styles */
-        .event-card-gradient {
-            background: linear-gradient(to right, rgba(30, 58, 138, 0.95), rgba(30, 58, 138, 0.8));
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden loading">
@@ -167,41 +157,42 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="glass-nav text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-                <div class="flex items-center justify-between w-full lg:w-auto">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-white p-1 rounded-full shadow-lg shrink-0">
-                            <img src="PS NO BG.png" alt="โลโก้โรงเรียนประสารวิทยา" class="w-10 h-10 md:w-12 md:h-12 object-contain" onerror="this.src='https://via.placeholder.com/80?text=PS'">
-                        </div>
-                        <div class="flex flex-col">
-                            <h1 class="font-bold text-sm md:text-base tracking-tight leading-tight whitespace-nowrap">สภานักเรียนโรงเรียนประสารวิทยา</h1>
-                            <span class="text-[10px] text-school-yellow opacity-90 font-medium uppercase tracking-widest whitespace-nowrap">Student Council 2024</span>
-                        </div>
+    <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
+        <div class="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white p-1 rounded-full shadow-md shrink-0">
+                        <img src="PS NO BG.png" alt="School Logo" class="w-10 h-10 object-contain" onerror="this.src='https://via.placeholder.com/40?text=PS'">
                     </div>
-                    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-[10px] md:text-sm tracking-tight leading-tight text-white uppercase">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
+                        <span class="text-[8px] md:text-[10px] text-school-yellow opacity-90 font-light uppercase tracking-wider">Student Council of Prasarnwittaya School (2024)</span>
+                    </div>
                 </div>
-
-                <div class="hidden lg:flex items-center space-x-1">
-                    <a href="#home" class="px-3 py-2 text-xs xl:text-sm font-semibold text-school-yellow border-b-2 border-school-yellow">HOME</a>
-                    <a href="#history" class="px-3 py-2 text-xs xl:text-sm font-semibold hover:text-school-yellow transition-colors whitespace-nowrap">SCHOOL</a>
-                    <a href="#school-management" class="px-3 py-2 text-xs xl:text-sm font-semibold hover:text-school-yellow transition-colors whitespace-nowrap uppercase">SCHOOL MANAGEMENT</a>
-                    <a href="#news-section" class="px-3 py-2 text-xs xl:text-sm font-semibold hover:text-school-yellow transition-colors whitespace-nowrap uppercase">NEWS/EVENT</a>
-                    <a href="beyond-the-classroom.html" class="px-3 py-2 text-xs xl:text-sm font-semibold hover:text-school-yellow transition-colors whitespace-nowrap uppercase">BEYOND THE CLASSROOM</a>
-                    <a href="#contact" class="px-3 py-2 text-xs xl:text-sm font-semibold hover:text-school-yellow transition-colors whitespace-nowrap">CONTACT US</a>
-                </div>
+                <!-- Mobile Toggle -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none hover:text-school-yellow transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
 
-            <div id="mobile-menu" class="lg:hidden flex flex-col space-y-2 pt-4">
-                <a href="#home" class="block py-2 text-sm font-semibold text-school-yellow border-b border-white/10">HOME</a>
-                <a href="#history" class="block py-2 text-sm font-semibold hover:text-school-yellow border-b border-white/10">SCHOOL</a>
-                <a href="#school-management" class="block py-2 text-sm font-semibold hover:text-school-yellow border-b border-white/10 uppercase">SCHOOL MANAGEMENT</a>
-                <a href="#news-section" class="block py-2 text-sm font-semibold hover:text-school-yellow border-b border-white/10 uppercase">NEWS/EVENT</a>
-                <a href="beyond-the-classroom.html" class="block py-2 text-sm font-semibold hover:text-school-yellow border-b border-white/10 uppercase">BEYOND THE CLASSROOM</a>
-                <a href="#contact" class="block py-2 text-sm font-semibold hover:text-school-yellow">CONTACT US</a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-1 lg:space-x-4">
+                <a href="#home" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">HOME</a>
+                <a href="#history" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">SCHOOL</a>
+                <a href="#school-management" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">MANAGEMENT</a>
+                <a href="news-event.html" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">NEWS/EVENT</a>
+                <a href="beyond-the-classroom.html" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">BEYOND THE CLASSROOM</a>
+                <a href="#contact" class="px-3 py-1 text-xs font-semibold hover:text-school-yellow transition-colors uppercase">CONTACT</a>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden w-full flex flex-col space-y-1 bg-blue-900/50 rounded-xl overflow-hidden transition-all duration-300 max-h-0">
+                <a href="#home" class="px-4 py-2 text-sm font-medium hover:bg-white/10 border-b border-white/5 uppercase">HOME</a>
+                <a href="#history" class="px-4 py-2 text-sm font-medium hover:bg-white/10 border-b border-white/5 uppercase">SCHOOL</a>
+                <a href="#school-management" class="px-4 py-2 text-sm font-medium hover:bg-white/10 border-b border-white/5 uppercase">MANAGEMENT</a>
+                <a href="news-event.html" class="px-4 py-2 text-sm font-medium hover:bg-white/10 border-b border-white/5 uppercase">NEWS/EVENT</a>
+                <a href="beyond-the-classroom.html" class="px-4 py-2 text-sm font-medium hover:bg-white/10 border-b border-white/5 uppercase">BEYOND THE CLASSROOM</a>
+                <a href="#contact" class="px-4 py-2 text-sm font-medium hover:bg-white/10 uppercase">CONTACT</a>
             </div>
         </div>
     </nav>
@@ -222,14 +213,14 @@
             <p class="text-lg md:text-2xl mb-12 font-medium tracking-widest text-blue-100 max-w-3xl mx-auto leading-relaxed uppercase">
                 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024)
             </p>
-            <button id="btn-more" class="bg-school-yellow text-blue-900 px-12 py-4 rounded-full font-bold text-lg hover:bg-white transition-all shadow-2xl hover:scale-105 active:scale-95 inline-block">
-                เพิ่มเติม <i class="fas fa-arrow-down ml-2"></i>
-            </button>
+            <a href="#vdo-section" class="bg-school-yellow text-blue-900 px-12 py-4 rounded-full font-bold text-lg hover:bg-white transition-all shadow-2xl hover:scale-105 active:scale-95 inline-block">
+                SEE MORE <i class="fas fa-arrow-down ml-2"></i>
+            </a>
         </div>
     </header>
 
     <!-- Video Section -->
-    <section id="vdo-section" class="py-24 bg-white section-pattern">
+    <section id="vdo-section" class="py-24 bg-white section-pattern scroll-mt-24">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
                 <div class="text-left flex-1">
@@ -247,7 +238,7 @@
     </section>
 
     <!-- History Section -->
-    <section id="history" class="py-24 bg-slate-100">
+    <section id="history" class="py-24 bg-slate-100 scroll-mt-24">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="relative history-img-container">
@@ -269,7 +260,7 @@
     </section>
 
     <!-- School Management System -->
-    <section id="school-management" class="py-24 bg-slate-50 overflow-hidden">
+    <section id="school-management" class="py-24 bg-slate-50 overflow-hidden scroll-mt-24">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="animated-orange-bg rounded-[3.5rem] p-8 md:p-20 relative overflow-hidden shadow-[0_35px_60px_-15px_rgba(249,115,22,0.5)]">
                 <div class="flex flex-col lg:flex-row items-center gap-16 relative z-10">
@@ -289,94 +280,9 @@
                     </div>
                     <div class="w-full lg:w-2/5">
                         <div class="bg-white rounded-[3rem] p-10 shadow-2xl text-center">
-                            <img src="https://www.schoolbright.co/images/logo_og.png" alt="School Bright" class="w-32 mx-auto mb-6">
-                            <a href="https://www.schoolbright.co" target="_blank" class="inline-block w-full py-4 bg-orange-600 text-white rounded-2xl font-black uppercase tracking-widest">Explore System</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW Section: NEWS/EVENT -->
-    <section id="news-section" class="py-24 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-4 max-w-6xl relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-school-blue font-bold tracking-[0.3em] uppercase mb-4 block">News & Events</span>
-                <h3 class="text-4xl md:text-5xl font-black text-blue-900 mb-4">ข่าวสารและกิจกรรมล่าสุด</h3>
-                <div class="h-1.5 w-24 bg-school-yellow mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-12">
-                <!-- Main Event: Homecoming -->
-                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl group min-h-[600px] flex items-end">
-                    <!-- Background Image (45year.jpg) -->
-                    <div class="absolute inset-0 z-0">
-                        <img src="45year.jpg" alt="45 ปี คืนสู่เหย้า" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/60 to-transparent"></div>
-                    </div>
-                    
-                    <div class="relative z-10 p-8 md:p-16 w-full text-white">
-                        <div class="inline-block bg-school-yellow text-blue-900 px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest mb-6 shadow-xl">
-                            Upcoming Event
-                        </div>
-                        
-                        <h4 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
-                            พร้อมหรือยัง? ที่จะกลับไปเป็น "นักเรียน" อีกครั้ง! <br>
-                            <span class="text-school-yellow">"45 ปี คืนสู่เหย้าชาวประสาร"</span>
-                        </h4>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                            <div class="space-y-4 text-blue-50 text-lg md:text-xl leading-relaxed">
-                                <p>
-                                    ในชีวิตจริงเราอาจจะเติบโตไปไกลตามคอนเซ็ปต์ <br class="hidden md:block">
-                                    <span class="font-bold text-white italic">"BEYOND THE CLASSROOM เรียนรู้อย่างต่อเนื่องจากห้องเรียนสู่โลกกว้าง"</span>
-                                </p>
-                                <p>แต่มีสิ่งหนึ่งที่ไม่เคยเปลี่ยนเลย คือ... <span class="font-bold text-school-yellow">"ความทรงจำดี ๆ"</span> ในรั้วประสารแห่งนี้</p>
-                                <p class="text-base opacity-90">กลับมาร่วมสร้างรอยยิ้ม เสียงหัวเราะ และความประทับใจให้หัวใจพองโตอีกครั้ง กับบรรยากาศที่อบอุ่น คุ้นเคย เหมือนวันวานที่ไม่มีวันจางหาย</p>
-                            </div>
-                            
-                            <div class="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] border border-white/20 space-y-6">
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-school-yellow/20 p-3 rounded-xl text-school-yellow"><i class="fas fa-calendar-alt text-2xl"></i></div>
-                                    <div>
-                                        <p class="text-xs uppercase tracking-widest text-school-yellow font-bold">DATE & TIME</p>
-                                        <p class="text-xl font-bold">วันเสาร์ที่ 17 มกราคม 2569</p>
-                                        <p class="text-sm opacity-80">เวลา 18.00 น. เป็นต้นไป</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-school-yellow/20 p-3 rounded-xl text-school-yellow"><i class="fas fa-map-marker-alt text-2xl"></i></div>
-                                    <div>
-                                        <p class="text-xs uppercase tracking-widest text-school-yellow font-bold">LOCATION</p>
-                                        <p class="text-xl font-bold">ณ โรงเรียนประสารวิทยา</p>
-                                        <p class="text-sm opacity-80">(บ้านหลังเดิมที่คิดถึง)</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-school-yellow/20 p-3 rounded-xl text-school-yellow"><i class="fas fa-chair text-2xl"></i></div>
-                                    <div>
-                                        <p class="text-xs uppercase tracking-widest text-school-yellow font-bold">PRICE / RESERVATION</p>
-                                        <p class="text-xl font-bold">3,200 บาท / โต๊ะ (8 ที่นั่ง)</p>
-                                        <p class="text-sm opacity-80">โต๊ะจีนสุดพิเศษพร้อมรอคุณและเพื่อนรัก</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-12 p-8 bg-white rounded-3xl text-blue-900 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
-                            <div class="text-center md:text-left">
-                                <h5 class="text-2xl font-black mb-2 uppercase">สนใจติดต่อซื้อบัตร/จองโต๊ะ</h5>
-                                <p class="text-slate-500 font-medium">รวมตัวแก๊งเดิมให้ครบ แล้วมาเจอกันค่ำคืนนี้!</p>
-                            </div>
-                            <div class="flex flex-wrap justify-center gap-4">
-                                <a href="tel:0863690405" class="bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center hover:bg-blue-800 transition-all shadow-lg">
-                                    <i class="fas fa-phone-alt mr-3"></i> 086-3690405
-                                </a>
-                                <a href="https://line.me/ti/p/~prasarnwittaya" target="_blank" class="bg-green-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center hover:bg-green-700 transition-all shadow-lg">
-                                    <i class="fab fa-line mr-3 text-2xl"></i> prasarnwittaya
-                                </a>
-                            </div>
+                            <!-- Updated Image to School Bright.png -->
+                            <img src="School Bright.png" alt="School Bright" class="w-48 mx-auto mb-6 object-contain" onerror="this.src='https://www.schoolbright.co/images/logo_og.png'">
+                            <a href="https://www.schoolbright.co" target="_blank" class="inline-block w-full py-4 bg-orange-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-orange-700 transition-colors">Explore System</a>
                         </div>
                     </div>
                 </div>
@@ -385,33 +291,26 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-slate-900 text-white pt-20 pb-10">
+    <footer id="contact" class="bg-slate-900 text-white py-12">
         <div class="container mx-auto px-4 text-center">
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 items-center border-b border-slate-800 pb-16">
-                <div class="text-center md:text-left">
-                    <h5 class="text-school-yellow font-bold text-lg mb-4">ที่อยู่ของเรา</h5>
-                    <p class="text-slate-400 leading-relaxed text-sm">162/5 หมู่ที่ 14 ต.สีคิ้ว <br> อ.สีคิ้ว จ.นครราชสีมา 30140</p>
+            <div class="mb-8">
+                <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 p-2 shadow-lg">
+                    <img src="PS NO BG.png" alt="Footer Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/60?text=PS'">
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="bg-white w-20 h-20 rounded-3xl flex items-center justify-center mb-6 p-2">
-                        <img src="PS NO BG.png" alt="โลโก้โรงเรียน" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/100?text=PS'">
-                    </div>
-                    <div class="text-center">
-                        <h4 class="font-bold text-lg text-white mb-1 uppercase">สภานักเรียนโรงเรียนประสารวิทยา</h4>
-                        <span class="text-school-yellow text-[10px] font-bold tracking-[0.2em] uppercase">Student Council 2024</span>
-                    </div>
-                </div>
-                <div class="text-center md:text-right">
-                    <h5 class="text-school-yellow font-bold text-lg mb-4">ติดตามเรา</h5>
-                    <div class="flex justify-center md:justify-end space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-600 transition-colors"><i class="fab fa-line"></i></a>
-                    </div>
-                </div>
+                <h4 class="font-bold text-lg md:text-xl uppercase tracking-wider text-school-yellow">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
+                <p class="text-slate-300 text-xs md:text-sm mt-1 font-light italic uppercase">Student Council of Prasarnwittaya School (2024)</p>
+                <p class="text-slate-400 text-sm mt-4">162/5 หมู่ ที่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140</p>
             </div>
-            <p class="text-slate-500 text-[10px] uppercase tracking-[0.3em] font-medium pt-8">
-                &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL. ALL RIGHTS RESERVED
-            </p>
+            <div class="flex justify-center space-x-6 mb-8 text-xl">
+                <a href="#" class="hover:text-school-yellow transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://line.me/ti/p/~prasarnwittaya" class="hover:text-school-yellow transition"><i class="fab fa-line"></i></a>
+                <a href="https://www.youtube.com/@prasarnwittaya" class="hover:text-school-yellow transition"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="border-t border-slate-800 pt-8">
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-medium leading-relaxed">
+                    &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024) ALL RIGHTS RESERVED
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -451,21 +350,31 @@
         setTimeout(() => {
             clearInterval(progressInterval);
             closePreloader();
-        }, 4000);
+        }, 3500);
 
+        // Mobile Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+            if (mobileMenu.style.maxHeight === '0px' || mobileMenu.style.maxHeight === '') {
+                mobileMenu.style.maxHeight = '400px'; 
+            } else {
+                mobileMenu.style.maxHeight = '0px';
+            }
             const icon = menuToggle.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
         });
 
-        document.getElementById('btn-more').addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.getElementById('news-section');
-            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.maxHeight = '0px';
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
         });
     </script>
 </body>
