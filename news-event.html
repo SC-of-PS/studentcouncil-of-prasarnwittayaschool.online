@@ -10,19 +10,81 @@
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            scroll-behavior: smooth;
         }
         
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1e3a8a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.6s ease-in-out, visibility 0.6s;
+        }
+
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            animation: pulse 2s infinite ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .loader-bar-container {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar {
+            width: 0%;
+            height: 100%;
+            background: #facc15;
+            box-shadow: 0 0 15px #facc15;
+            transition: width 0.3s ease-out;
+        }
+
+        .loader-text {
+            color: white;
+            margin-top: 15px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        body.loading {
+            overflow: hidden !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         .bg-school-blue { background-color: #1e3a8a; }
         .text-school-blue { color: #1e3a8a; }
         .bg-school-yellow { background-color: #facc15; }
         .text-school-yellow { color: #facc15; }
         
         .hero-gradient {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.95)), url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            min-height: 70vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -50,13 +112,9 @@
             border: 0;
         }
 
-        .bank-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-            border: 2px solid #e2e8f0;
-        }
-
-        .hero-title-shadow {
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        .section-pattern {
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
         }
 
         #mobile-menu {
@@ -67,34 +125,48 @@
         #mobile-menu.active {
             max-height: 600px;
         }
-        
-        .contact-pill {
-            background: rgba(30, 58, 138, 0.1);
-            border: 1px solid rgba(30, 58, 138, 0.2);
-            transition: all 0.3s ease;
+
+        .history-img-container img {
+            transition: transform 0.5s ease;
         }
-        .contact-pill:hover {
-            background: #1e3a8a;
-            color: white;
+        .history-img-container:hover img {
+            transform: scale(1.03);
         }
-        
-        .gradient-border-card {
-            position: relative;
-            background: white;
-            border-radius: 3rem;
-            z-index: 1;
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .gradient-border-card::before {
-            content: "";
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #1e3a8a, #facc15);
-            border-radius: 3rem;
-            z-index: -1;
+        .animated-orange-bg {
+            background: linear-gradient(-45deg, #ea580c, #f97316, #fb923c, #f59e0b);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden loading">
+
+    <!-- Preloader Section -->
+    <div id="preloader">
+        <img src="PSCC NO BG.png" alt="Logo" class="loader-logo" onerror="this.src='https://via.placeholder.com/120?text=PSCC'">
+        <div class="loader-bar-container">
+            <div id="loader-progress" class="loader-bar"></div>
+        </div>
+        <p class="loader-text">Loading Website...</p>
+    </div>
+
+    <!-- Persistent Maintenance Banner (Fixed at the top of the content) -->
+    <div class="bg-amber-100 border-b-2 border-amber-300 py-4 px-4 relative z-[200]">
+        <div class="container mx-auto flex items-center gap-4">
+            <div class="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-lg animate-pulse">
+                <i class="fas fa-tools"></i>
+            </div>
+            <p class="text-amber-950 text-xs md:text-sm font-medium leading-relaxed">
+                <span class="font-bold text-amber-700">ประกาศสำคัญ:</span> ขออภัยในความไม่สะดวก ขณะนี้เว็บไซต์อยู่ในระหว่างการปรับปรุงเพื่อประสิทธิภาพที่ดีที่สุด ทั้งนี้ยังสามารถชมเว็บไซต์ได้ตลอดการปรับปรุง หากเกิดข้อผิดพลาด คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567 ต้องขออภัยมา ณ โอกาสนี้
+            </p>
+        </div>
+    </div>
 
     <!-- Navigation Bar -->
     <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
