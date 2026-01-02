@@ -67,6 +67,31 @@
         #mobile-menu.active {
             max-height: 600px;
         }
+        
+        .contact-pill {
+            background: rgba(30, 58, 138, 0.1);
+            border: 1px solid rgba(30, 58, 138, 0.2);
+            transition: all 0.3s ease;
+        }
+        .contact-pill:hover {
+            background: #1e3a8a;
+            color: white;
+        }
+        
+        .gradient-border-card {
+            position: relative;
+            background: white;
+            border-radius: 3rem;
+            z-index: 1;
+        }
+        .gradient-border-card::before {
+            content: "";
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #1e3a8a, #facc15);
+            border-radius: 3rem;
+            z-index: -1;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -77,7 +102,7 @@
             <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
                 <div class="flex items-center space-x-3">
                     <div class="bg-white p-1 rounded-full shadow-md shrink-0">
-                        <img src="image_87828e.png" alt="School Logo" class="w-10 h-10 object-contain" onerror="this.src='https://via.placeholder.com/40?text=PS'">
+                        <img src="PSCC NO BG.png" alt="สภานักเรียน" class="w-10 h-10 object-contain" onerror="this.src='https://via.placeholder.com/40?text=PSCC'">
                     </div>
                     <div class="flex flex-col">
                         <span class="font-bold text-[10px] md:text-sm tracking-tight leading-tight text-white">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
@@ -115,15 +140,13 @@
         <div class="container mx-auto max-w-5xl">
             <div class="mb-10 flex justify-center">
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 inline-flex flex-col items-center">
-                    <img src="image_87828e.png" alt="โลโก้โรงเรียน" class="w-24 h-24 object-contain mb-4 animate-pulse" onerror="this.src='https://via.placeholder.com/100?text=PS'">
-                    <!-- Updated Badge text -->
+                    <img src="PSCC NO BG.png" alt="โลโก้สภานักเรียน" class="w-24 h-24 object-contain mb-4 animate-pulse" onerror="this.src='https://via.placeholder.com/100?text=PSCC'">
                     <span class="anniversary-badge text-blue-900 px-6 py-2 rounded-full font-black text-xs tracking-[0.2em] uppercase">
                         45TH YEARS BEYOND THE CLASSROOM
                     </span>
                 </div>
             </div>
             
-            <!-- Updated Titles -->
             <h2 class="text-4xl md:text-7xl font-black mb-4 leading-tight hero-title-shadow uppercase italic">
                 NEWS/EVENT
             </h2>
@@ -146,49 +169,137 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16">
                 <span class="text-school-blue font-bold tracking-[0.3em] uppercase mb-4 block">Our Spirit</span>
-                <h3 class="text-4xl md:text-5xl font-black text-blue-900 mb-4">NEWS / EVENT</h3>
+                <h3 class="text-4xl md:text-5xl font-black text-blue-900 mb-4 uppercase italic">News & Events</h3>
                 <div class="h-1.5 w-24 bg-school-yellow mx-auto rounded-full"></div>
             </div>
 
-            <!-- News/Events Grid -->
-            <div class="space-y-20">
-                <!-- Event Card -->
-                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl group min-h-[500px] flex items-end">
-                    <div class="absolute inset-0 z-0">
-                        <img src="45year.jpg" alt="45 ปี คืนสู่เหย้า" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/60 to-transparent"></div>
+            <!-- Main Event Card: 45 Years Homecoming -->
+            <div class="bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 mb-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="relative h-[400px] lg:h-auto overflow-hidden">
+                        <img src="45year.jpg" alt="45 ปี คืนสู่เหย้าชาวประสาร" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+                        <div class="absolute top-6 left-6 bg-school-yellow text-blue-900 px-4 py-2 rounded-xl font-black text-xs uppercase italic tracking-widest shadow-lg">
+                            Highlight Event
+                        </div>
                     </div>
-                    <div class="relative z-10 p-8 md:p-16 w-full text-white">
-                        <div class="inline-block bg-school-yellow text-blue-900 px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest mb-6 italic">NEWS / EVENT</div>
-                        <h4 class="text-3xl md:text-5xl font-black mb-6 leading-tight uppercase">"45 ปี คืนสู่เหย้าชาวประสาร"</h4>
-                        <div class="flex flex-wrap gap-8 mb-10 text-sm">
-                            <div class="flex items-center space-x-3"><i class="fas fa-calendar text-school-yellow"></i> <span>17 ม.ค. 2569</span></div>
-                            <div class="flex items-center space-x-3"><i class="fas fa-map-marker-alt text-school-yellow"></i> <span>โรงเรียนประสารวิทยา</span></div>
+                    
+                    <div class="p-8 md:p-14 flex flex-col justify-center">
+                        <h4 class="text-blue-900 font-bold text-xl mb-2">พร้อมหรือยัง? ที่จะกลับไปเป็น "นักเรียน" อีกครั้ง!</h4>
+                        <h3 class="text-3xl md:text-4xl font-black text-blue-950 mb-6 leading-tight uppercase italic">"45 ปี คืนสู่เหย้าชาวประสาร"</h3>
+                        
+                        <div class="space-y-4 text-slate-600 mb-8 leading-relaxed">
+                            <p>
+                                ในชีวิตจริงเราอาจจะเติบโตไปไกลตามคอนเซ็ปต์ <br>
+                                <span class="text-school-blue font-bold">"BEYOND THE CLASSROOM เรียนรู้อย่างต่อเนื่องจากห้องเรียนสู่โลกกว้าง"</span> 
+                                แต่มีสิ่งหนึ่งที่ไม่เคยเปลี่ยนเลย คือ... <span class="italic">"ความทรงจำดี ๆ"</span> ในรั้วประสารแห่งนี้
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                            <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                                <div class="w-10 h-10 bg-school-blue text-white rounded-full flex items-center justify-center shrink-0">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase font-bold text-slate-400">Date</p>
+                                    <p class="text-sm font-bold text-blue-900">เสาร์ที่ 17 ม.ค. 2569</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                                <div class="w-10 h-10 bg-school-blue text-white rounded-full flex items-center justify-center shrink-0">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase font-bold text-slate-400">Time</p>
+                                    <p class="text-sm font-bold text-blue-900">18.00 น. เป็นต้นไป</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-900 text-white p-6 rounded-3xl mb-8 shadow-xl relative overflow-hidden">
+                            <h5 class="text-school-yellow font-black text-lg mb-1 uppercase tracking-tighter italic">Table Reservation</h5>
+                            <p class="text-2xl font-black mb-1">3,200 บาท/โต๊ะ</p>
+                            <p class="text-xs opacity-80 uppercase font-medium">โต๊ะจีนสุดพิเศษ (8 ที่นั่งต่อโต๊ะ)</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <p class="text-sm font-bold text-blue-900 uppercase italic">ติดต่อจองโต๊ะ:</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="tel:0863690405" class="contact-pill px-6 py-3 rounded-full flex items-center gap-2 text-sm font-bold">
+                                    <i class="fas fa-phone"></i> 086-3690405
+                                </a>
+                                <a href="#" class="contact-pill px-6 py-3 rounded-full flex items-center gap-2 text-sm font-bold">
+                                    <i class="fab fa-line text-green-500"></i> prasarnwittaya
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Merit Event Card -->
-                <div class="bg-slate-50 rounded-[3rem] overflow-hidden shadow-xl border border-slate-200">
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-                        <div class="relative h-64 lg:h-auto">
-                            <img src="45year mo.jpg" alt="ทอดผ้าป่าเพื่อการศึกษา" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+            <!-- Donation Event Card (QR Code Removed) -->
+            <div class="gradient-border-card overflow-hidden shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="relative h-[400px] lg:h-auto overflow-hidden">
+                        <img src="45year mo.jpg" alt="ทอดผ้าป่าเพื่อการศึกษา" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex items-end p-8">
+                            <div class="text-white">
+                                <p class="text-school-yellow font-black text-sm uppercase tracking-widest mb-2">Save the Date</p>
+                                <p class="text-xl font-bold italic">วันศุกร์ที่ 16 มกราคม 2569 เวลา 09.30 น.</p>
+                                <p class="text-sm opacity-90">ณ ห้องประชุมราชพฤกษ์ โรงเรียนประสารวิทยา</p>
+                            </div>
                         </div>
-                        <div class="p-8 md:p-14">
-                            <h4 class="text-2xl font-black text-blue-900 mb-4 uppercase italic">ร่วมทอดผ้าป่าเพื่อการศึกษา</h4>
-                            <p class="text-slate-600 mb-8 leading-relaxed">เพื่อจัดซื้ออุปกรณ์วงดุริยางค์ สนับสนุนศักยภาพนักเรียน ในโอกาสครบรอบ 45 ปี</p>
-                            
-                            <div class="bank-card p-6 rounded-[2rem] shadow-inner">
-                                <div class="flex items-center gap-6">
-                                    <div class="w-20 h-20 bg-white p-2 rounded-2xl shadow-md shrink-0">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PROMPTPAY:1388049797" alt="QR Donation" class="w-full h-full object-contain">
+                    </div>
+                    
+                    <div class="p-8 md:p-14">
+                        <span class="bg-blue-100 text-blue-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 inline-block italic">Charity & Education</span>
+                        <h3 class="text-2xl md:text-3xl font-black text-blue-900 mb-4 leading-tight">ขอเชิญร่วมเป็นเจ้าภาพทอดผ้าป่าเพื่อการศึกษา <br class="hidden md:block"> "45 ปี คืนสู่เหย้าชาวประสาร"</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">เพื่อสมทบทุนจัดซื้ออุปกรณ์วงดุริยางค์ สนับสนุนส่งเสริมศักยภาพของนักเรียนให้ก้าวสู่ความเป็นเลิศทางดนตรี</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <!-- Bank Info Only -->
+                            <div class="bank-card p-6 rounded-[2rem] shadow-inner flex flex-col justify-center">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center shadow-md">
+                                        <i class="fas fa-university"></i>
                                     </div>
-                                    <div>
-                                        <p class="text-[10px] font-bold text-green-600 uppercase">ธนาคารกสิกรไทย</p>
-                                        <h5 class="text-lg font-black text-blue-900">138-8-04979-7</h5>
-                                        <p class="text-xs font-bold text-slate-700">โรงเรียนประสารวิทยา</p>
+                                    <p class="text-[10px] font-bold text-green-600 uppercase">ธนาคารกสิกรไทย</p>
+                                </div>
+                                <h5 class="text-2xl font-black text-blue-900 mb-1">138-8-04979-7</h5>
+                                <p class="text-sm font-bold text-slate-700 mb-3 tracking-tight">ชื่อบัญชี: โรงเรียนประสารวิทยา</p>
+                                <div class="inline-block">
+                                    <span class="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">ระบบ E-donation ลดหย่อนภาษีได้ 2 เท่า</span>
+                                </div>
+                            </div>
+
+                            <!-- Coordinators -->
+                            <div class="space-y-4">
+                                <p class="text-xs font-black text-blue-900 uppercase italic border-b border-slate-200 pb-2">ผู้ประสานงาน:</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-900 text-xs shadow-sm"><i class="fas fa-user"></i></div>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-800">ครูสุภาพร พลจันทึก (ครูองุ่น)</p>
+                                            <p class="text-[10px] text-blue-600">081-3938766</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-900 text-xs shadow-sm"><i class="fas fa-user"></i></div>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-800">ครูสุพัชชา พลจันทึก (ครูหน่อย)</p>
+                                            <p class="text-[10px] text-blue-600">081-0698247</p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification for Tax -->
+                        <div class="bg-slate-100 p-5 rounded-2xl border-l-4 border-school-yellow">
+                            <p class="text-xs font-bold text-blue-900 mb-2 uppercase italic">แจ้งขอใบอนุโมทนา เพื่อลดหย่อนภาษี:</p>
+                            <div class="flex flex-wrap gap-4 text-[11px] font-bold text-slate-600">
+                                <span class="flex items-center gap-2"><i class="fas fa-phone text-blue-900"></i> 086-3690405</span>
+                                <span class="flex items-center gap-2"><i class="fab fa-line text-green-600"></i> prasarnwittaya</span>
                             </div>
                         </div>
                     </div>
@@ -214,8 +325,8 @@
     <footer id="contact" class="bg-slate-900 text-white py-12">
         <div class="container mx-auto px-4 text-center">
             <div class="mb-8">
-                <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 p-2 shadow-lg overflow-hidden">
-                    <img src="image_87828e.png" alt="Footer Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/60?text=PS'">
+                <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 p-2 shadow-lg overflow-hidden">
+                    <img src="PSCC NO BG.png" alt="สภานักเรียน" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/60?text=PSCC'">
                 </div>
                 <h4 class="font-bold text-lg md:text-xl uppercase tracking-wider text-school-yellow">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
                 <p class="text-slate-300 text-xs md:text-sm mt-1 font-light italic uppercase tracking-widest">Student Council of Prasarnwittaya School (2024)</p>
@@ -235,7 +346,6 @@
     </footer>
 
     <script>
-        // Mobile Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -246,7 +356,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Close menu when clicking link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -255,7 +364,6 @@
             });
         });
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
