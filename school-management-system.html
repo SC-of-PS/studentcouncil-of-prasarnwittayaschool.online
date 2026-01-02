@@ -3,74 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ไม่พบหน้านี้ - 404 Error</title>
+    <title>สภานักเรียนโรงเรียนประสารวิทยา | SCHOOL BRIGHT</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            background: #f8fafc;
+            scroll-behavior: smooth;
         }
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
+        
+        .bg-school-blue { background-color: #1e3a8a; }
+        .text-school-blue { color: #1e3a8a; }
+        .bg-school-yellow { background-color: #facc15; }
+        .text-school-yellow { color: #facc15; }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+        .anniversary-badge {
+            background: linear-gradient(45deg, #d4af37, #f7e08a);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
-        .blob {
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .video-container iframe {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .qa-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .qa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen overflow-hidden">
+<body class="bg-slate-50 text-slate-900">
 
-    <!-- พื้นหลังตกแต่ง -->
-    <div class="blob top-[-100px] left-[-100px]"></div>
-    <div class="blob bottom-[-100px] right-[-100px]"></div>
-
-    <div class="text-center px-6">
-        <!-- ภาพประกอบ SVG -->
-        <div class="mb-8 float-animation">
-            <svg class="mx-auto w-64 h-64 md:w-80 md:h-80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#3B82F6" d="M44.7,-76.4C58.1,-69.2,69.1,-57.4,76.5,-43.8C83.8,-30.2,87.6,-15.1,86.5,-0.6C85.4,13.8,79.5,27.7,71.4,40.1C63.3,52.5,53.1,63.4,40.7,71.1C28.3,78.8,14.1,83.4,-0.8,84.8C-15.7,86.2,-31.4,84.4,-45.3,77.7C-59.2,71,-71.3,59.3,-78.7,45.5C-86.1,31.7,-88.8,15.8,-88.2,0.4C-87.5,-15.1,-83.4,-30.2,-75.1,-43.3C-66.8,-56.4,-54.3,-67.5,-40.5,-74.5C-26.7,-81.4,-13.3,-84.3,0.7,-85.5C14.7,-86.7,29.4,-86.2,44.7,-76.4Z" transform="translate(100 100)" opacity="0.1" />
-                <text x="50%" y="55%" text-anchor="middle" font-size="60" font-weight="bold" fill="#1E40AF" style="font-family: sans-serif;">404</text>
-            </svg>
+    <!-- Navigation Bar -->
+    <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="shrink-0">
+                    <img src="PSCC NO BG.png" alt="School Logo" class="w-12 h-12 object-contain" onerror="this.src='https://via.placeholder.com/150?text=PSCC'">
+                </div>
+                <div class="flex flex-col border-l border-white/20 pl-3">
+                    <!-- อัปเดตส่วนหัวบนสุด -->
+                    <span class="font-bold text-xs md:text-sm tracking-tight leading-tight text-white uppercase">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
+                    <span class="text-[9px] md:text-[10px] text-school-yellow opacity-90 font-light uppercase tracking-wider italic">STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024)</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 md:space-x-6">
+                <!-- ปุ่ม GO BACK -->
+                <a href="index.html" class="text-[10px] md:text-xs text-slate-300 hover:text-white transition flex items-center gap-1 opacity-80 hover:opacity-100">
+                    <i class="fas fa-chevron-left"></i> GO BACK
+                </a>
+                <div class="h-4 w-[1px] bg-slate-600 hidden md:block"></div>
+                <!-- ปุ่ม SCHOOL BRIGHT -->
+                <a href="#beyond-classroom" class="hover:text-school-yellow transition text-school-yellow border-b-2 border-school-yellow pb-1 font-medium text-sm md:text-base uppercase">
+                    SCHOOL BRIGHT
+                </a>
+            </div>
         </div>
+    </nav>
 
-        <!-- ข้อความแจ้งเตือน -->
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            ขออภัย ไม่พบหน้าที่คุณต้องการ
-        </h1>
-        <p class="text-lg text-gray-600 mb-10 max-w-md mx-auto">
-            หน้าเว็บที่คุณกำลังพยายามเข้าถึงอาจถูกลบออก เปลี่ยนชื่อ หรือไม่พร้อมใช้งานในขณะนี้
-        </p>
-
-        <!-- ปุ่มควบคุม -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="index.html" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition duration-300 shadow-lg shadow-blue-200">
-                กลับหน้าหลัก
+    <!-- Hero Section -->
+    <header id="home" class="hero-gradient text-white py-20 px-4 text-center">
+        <div class="container mx-auto max-w-5xl">
+            <div class="mb-8 inline-block">
+                <span class="anniversary-badge text-blue-900 px-8 py-2.5 rounded-full font-bold text-xs md:text-sm tracking-[0.1em] uppercase">
+                    SCHOOL MANAGEMENT SYSTEM BY SCHOOL BRIGHT
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black mb-6 drop-shadow-2xl leading-tight uppercase italic tracking-tighter">
+                SCHOOL <span class="text-school-yellow">BRIGHT</span>
+            </h1>
+            <p class="text-2xl md:text-4xl mb-10 font-bold text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                " ระบบบริหารโรงเรียนดิจิทัล "
+            </p>
+            <a href="#beyond-classroom" class="inline-block bg-school-yellow text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-white transition shadow-lg hover:shadow-school-yellow/20">
+                สำรวจระบบดิจิทัล
             </a>
-            <a href="index.html" class="px-8 py-3 bg-white text-gray-700 font-semibold rounded-full border border-gray-200 hover:bg-gray-50 transition duration-300 text-center">
-                ย้อนกลับ
-            </a>
         </div>
+    </header>
 
-        <!-- ข้อมูลติดต่อเพิ่มเติม (Optional) -->
-        <div class="mt-16 text-gray-400 text-sm">
-            ต้องการความช่วยเหลือ? <a href="#" class="text-blue-500 hover:underline">ติดต่อฝ่ายสนับสนุน</a>
+    <!-- Content Section -->
+    <section id="beyond-classroom" class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-6xl font-black text-blue-900 mb-2 uppercase italic tracking-tight">SCHOOL BRIGHT</h2>
+                <p class="text-xl md:text-2xl text-school-blue font-semibold mb-6">" ระบบบริหารโรงเรียนดิจิทัล "</p>
+                <div class="h-1.5 w-32 bg-school-yellow mx-auto rounded-full mb-10"></div>
+                
+                <!-- Quote Section -->
+                <div class="max-w-4xl mx-auto bg-slate-50 p-10 rounded-[2.5rem] border-l-8 border-school-blue relative shadow-inner mb-20">
+                    <i class="fas fa-quote-left absolute top-6 left-6 text-slate-200 text-6xl opacity-50"></i>
+                    <p class="text-xl md:text-3xl text-slate-700 leading-relaxed relative z-10 italic font-light">
+                        "ยกระดับการบริหารจัดการสถานศึกษาด้วยเทคโนโลยีที่ทันสมัย เพื่อสร้างอนาคตที่ดีกว่าให้กับนักเรียนและบุคลากรทางการศึกษาทุกคน"
+                    </p>
+                    <p class="mt-6 font-bold text-school-blue text-xl">— SCHOOL BRIGHT TEAM</p>
+                </div>
+            </div>
+
+            <!-- Q&A Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">01</span>
+                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ทำไมต้องเลือก SCHOOL BRIGHT?</h4>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed pl-14">เพราะเป็นระบบที่ออกแบบมาเพื่อโรงเรียนไทยโดยเฉพาะ ครอบคลุมทุกมิติการบริหารจัดการ ทั้งงานวิชาการ งานปกครอง และงานธุรการในแพลตฟอร์มเดียว</p>
+                </div>
+
+                <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">02</span>
+                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ระบบช่วยลดภาระครูได้อย่างไร?</h4>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed pl-14">ด้วยระบบอัตโนมัติในการเช็คชื่อ กรอกคะแนน และออกรายงาน ปพ. ต่างๆ ช่วยให้ครูมีเวลาโฟกัสกับการพัฒนาการเรียนการสอนของนักเรียนได้มากขึ้น</p>
+                </div>
+
+                <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">03</span>
+                        <h4 class="font-bold text-blue-900 text-xl leading-snug">การสื่อสารระหว่างโรงเรียนและผู้ปกครอง</h4>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed pl-14">ผู้ปกครองสามารถติดตามผลการเรียน พฤติกรรม และข่าวสารจากทางโรงเรียนได้แบบ Real-time ผ่านแอปพลิเคชันมือถือ สร้างความมั่นใจในความปลอดภัยของบุตรหลาน</p>
+                </div>
+
+                <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">04</span>
+                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ความปลอดภัยของข้อมูล</h4>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed pl-14">ข้อมูลทั้งหมดถูกจัดเก็บด้วยระบบ Cloud ที่มีมาตรฐานความปลอดภัยสูง มีการสำรองข้อมูลอย่างสม่ำเสมอ และจำกัดสิทธิ์การเข้าถึงข้อมูลตามบทบาทหน้าที่</p>
+                </div>
+
+                <div class="qa-card bg-blue-900 text-white p-8 rounded-3xl shadow-xl shadow-blue-900/30 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-school-yellow text-blue-900 w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0">05</span>
+                        <h4 class="font-bold text-school-yellow text-xl leading-snug">ฟีเจอร์เด่น: ระบบเช็คชื่ออัจฉริยะ</h4>
+                    </div>
+                    <p class="text-blue-100 leading-relaxed pl-14 font-light">รองรับทั้งการสแกนใบหน้า การ์ด หรือผ่านแอปพลิเคชัน พร้อมส่งข้อความแจ้งเตือนถึงผู้ปกครองทันทีเมื่อนักเรียนเข้าหรือออกจากโรงเรียน</p>
+                </div>
+
+                <div class="qa-card bg-school-yellow p-8 rounded-3xl shadow-xl shadow-yellow-500/20 reveal">
+                    <div class="flex items-start mb-4">
+                        <span class="bg-blue-900 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0">06</span>
+                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ก้าวสู่โรงเรียนไร้กระดาษ (Paperless)</h4>
+                    </div>
+                    <p class="text-blue-900/80 leading-relaxed pl-14 font-medium">เปลี่ยนเอกสารราชการและงานธุรการให้เป็นรูปแบบดิจิทัลทั้งหมด ลดค่าใช้จ่าย ลดขั้นตอน และเพิ่มประสิทธิภาพการทำงานสูงสุด</p>
+                </div>
+            </div>
+
+            <!-- Conclusion Quote -->
+            <div class="mt-20 text-center max-w-4xl mx-auto border-t-2 border-slate-100 pt-16 mb-24 reveal">
+                <p class="text-xl md:text-3xl text-blue-900 leading-relaxed font-light italic">
+                    "เทคโนโลยีไม่ได้มาแทนที่ครู แต่จะมาช่วยให้ครูทำงานได้ง่ายขึ้น เพื่อเป้าหมายสูงสุดคือคุณภาพชีวิตและการศึกษาของนักเรียนทุกคนในยุคดิจิทัล"
+                </p>
+                <div class="mt-8 flex flex-col items-center">
+                    <div class="h-1 w-12 bg-school-yellow mb-4"></div>
+                    <p class="font-bold text-school-blue text-xl">— SCHOOL BRIGHT</p>
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="max-w-5xl mx-auto mb-24 reveal">
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-bold text-blue-900 uppercase tracking-widest flex items-center justify-center">
+                        <span class="w-8 h-[2px] bg-red-600 mr-4"></span>
+                        <i class="fab fa-youtube text-red-600 mr-3"></i> วิดีโอแนะนำระบบ
+                        <span class="w-8 h-[2px] bg-red-600 ml-4"></span>
+                    </h3>
+                </div>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/1KF5YXDv3mA" 
+                        title="SCHOOL BRIGHT SYSTEM" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-10">
+                <div class="mx-auto mb-6 w-24 h-24 bg-white rounded-full p-2 shadow-2xl">
+                    <img src="PSCC NO BG.png" alt="Footer Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/150'">
+                </div>
+                <!-- อัปเดตส่วนท้าย -->
+                <h4 class="font-bold text-xl md:text-2xl uppercase tracking-wider text-school-yellow mb-2">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
+                <p class="text-slate-400 text-xs md:text-sm font-light uppercase tracking-[0.3em] mb-6">STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024)</p>
+                <div class="flex items-center justify-center text-slate-400 gap-2 text-sm">
+                    <i class="fas fa-map-marker-alt text-school-yellow"></i>
+                    <span>162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140</span>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-8 mb-12 text-2xl">
+                <a href="#" class="text-slate-500 hover:text-blue-500 transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-slate-500 hover:text-green-500 transition-colors"><i class="fab fa-line"></i></a>
+                <a href="#" class="text-slate-500 hover:text-red-600 transition-colors"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <div class="border-t border-slate-800 pt-10">
+                <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-medium leading-relaxed max-w-2xl mx-auto">
+                    &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL. ALL RIGHTS RESERVED.
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // ฟังก์ชันเพิ่มเติมสำหรับตรวจสอบสถานะ
-        console.log("Error 404: Page not found triggered.");
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
     </script>
+
 </body>
 </html>
