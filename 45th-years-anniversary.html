@@ -1,1 +1,377 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45 ปี โรงเรียนประสารวิทยา</title>
+    <!-- Google Fonts: Mitr -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: #ffffff;
+            color: #1e3a8a; /* Deep Blue */
+        }
+        .bg-blue-primary { background-color: #1e3a8a; }
+        .text-yellow-primary { color: #facc15; }
+        .bg-yellow-primary { background-color: #facc15; }
+        .border-yellow-primary { border-color: #facc15; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
 
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.1), 0 8px 10px -6px rgba(30, 58, 138, 0.1);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #facc15;
+            border: 4px solid #1e3a8a;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        .logo-img {
+            max-height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+        .btn-go-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- ปุ่ม GO BACK -->
+    <a href="index.html" class="btn-go-back bg-white/20 hover:bg-white/40 backdrop-blur-md text-white border border-white/30 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="group-hover:-translate-x-1 transition-transform">
+            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+        </svg>
+        <span class="text-sm font-medium">GO BACK</span>
+    </a>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-12 px-4 text-center border-b-8 border-yellow-primary">
+        <div class="max-w-4xl mx-auto pt-8">
+            <div class="mb-6 inline-block p-4 bg-white rounded-3xl shadow-lg">
+                <img src="0.jpg" alt="โลโก้โรงเรียนประสารวิทยา" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+                <div id="fallback-logo" style="display:none;">
+                    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="#1e3a8a" stroke-width="2"/>
+                        <path d="M30 70 L50 30 L70 70 Z" fill="#facc15"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-semibold mb-2 text-white">ครบรอบ 45 ปี โรงเรียนประสารวิทยา</h1>
+            <h2 class="text-4xl md:text-7xl text-yellow-primary font-bold my-4 tracking-tight">" Beyond The Classroom "</h2>
+            <p class="text-lg md:text-2xl opacity-90 font-light mt-4 italic">เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ</p>
+            
+            <div class="mt-12 mb-4">
+                <div id="countdown" class="flex justify-center gap-3 md:gap-6">
+                    <div class="countdown-item rounded-xl p-3 md:p-5 min-w-[70px] md:min-w-[100px]">
+                        <div id="days" class="text-2xl md:text-5xl font-bold">00</div>
+                        <div class="text-[10px] md:text-sm opacity-80 uppercase tracking-widest">Days</div>
+                    </div>
+                    <div class="countdown-item rounded-xl p-3 md:p-5 min-w-[70px] md:min-w-[100px]">
+                        <div id="hours" class="text-2xl md:text-5xl font-bold">00</div>
+                        <div class="text-[10px] md:text-sm opacity-80 uppercase tracking-widest">Hrs</div>
+                    </div>
+                    <div class="countdown-item rounded-xl p-3 md:p-5 min-w-[70px] md:min-w-[100px]">
+                        <div id="minutes" class="text-2xl md:text-5xl font-bold">00</div>
+                        <div class="text-[10px] md:text-sm opacity-80 uppercase tracking-widest">Mins</div>
+                    </div>
+                    <div class="countdown-item rounded-xl p-3 md:p-5 min-w-[70px] md:min-w-[100px] border-yellow-primary bg-yellow-primary text-blue-900">
+                        <div id="seconds" class="text-2xl md:text-5xl font-bold">00</div>
+                        <div class="text-[10px] md:text-sm opacity-80 font-bold uppercase tracking-widest">Secs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Highlights Summary -->
+        <section class="grid md:grid-cols-3 gap-8 mb-16 text-center">
+            <div class="p-8 bg-white border-2 border-blue-primary rounded-2xl shadow-sm">
+                <div class="text-4xl mb-4">📅</div>
+                <h3 class="text-xl font-semibold mb-2">วันที่จัดงาน</h3>
+                <p class="text-gray-600 font-medium">วันเสาร์ที่ 17 มกราคม 2569</p>
+                <p class="text-sm text-gray-500 mt-1">ณ ลานอาคารอเนกประสงค์<br>โรงเรียนประสารวิทยา</p>
+            </div>
+            <div class="p-8 bg-yellow-primary text-blue-primary rounded-2xl shadow-sm">
+                <div class="text-4xl mb-4">⏰</div>
+                <h3 class="text-xl font-semibold mb-2">เวลาเริ่มงาน</h3>
+                <p class="text-2xl font-bold">18:00 น.</p>
+                <p class="font-medium">เป็นต้นไป</p>
+            </div>
+            <div class="p-8 bg-white border-2 border-blue-primary rounded-2xl shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-red-500 text-white px-6 py-1 rotate-45 translate-x-4 translate-y-2 text-xs font-bold uppercase">Hot!</div>
+                <div class="text-4xl mb-4">🏠</div>
+                <h3 class="text-xl font-semibold mb-2">คืนสู่เหย้าชาวประสาร</h3>
+                <p class="text-red-600 font-bold italic underline">รีบจองโต๊ะก่อนเต็ม!</p>
+                <p class="text-xs text-gray-500 mt-2">(จำนวนจำกัดใกล้เต็มแล้ว)</p>
+            </div>
+        </section>
+
+        <!-- Video Highlights Section -->
+        <section class="mb-16">
+            <div class="flex items-center mb-8">
+                <div class="w-3 h-10 bg-red-600 mr-4 rounded-full"></div>
+                <h2 class="text-3xl font-bold tracking-tight text-blue-900">วิดีโอแนะนำ & บรรยากาศ</h2>
+            </div>
+            
+            <div class="card-shadow rounded-2xl bg-white p-6 mb-8 border border-gray-100">
+                <h4 class="font-bold text-blue-800 text-xl mb-4 flex items-center">
+                    <span class="mr-2 text-red-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </span>
+                    วิดีโอไฮไลท์งาน 45 ปี ประสารวิทยา
+                </h4>
+                <div class="video-container shadow-2xl">
+                    <iframe src="https://www.youtube.com/embed/1KF5YXDv3mA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 rounded-3xl p-6 md:p-8">
+                <h4 class="font-bold text-blue-900 text-lg mb-6 flex items-center">
+                    <span class="mr-2 text-blue-600">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </span>
+                    บรรยากาศกิจกรรมจาก Facebook
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <a href="https://www.facebook.com/share/v/14Vec34VjxK/" target="_blank" class="bg-white p-4 rounded-2xl card-shadow hover:scale-105 transition-transform group">
+                        <div class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                            <span class="text-blue-600 font-medium">🎬 บรรยากาศ 1</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/share/v/1C1ZTdfDFY/" target="_blank" class="bg-white p-4 rounded-2xl card-shadow hover:scale-105 transition-transform group">
+                        <div class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                            <span class="text-blue-600 font-medium">🎬 บรรยากาศ 2</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/share/v/1BzoNFgew1/" target="_blank" class="bg-white p-4 rounded-2xl card-shadow hover:scale-105 transition-transform group">
+                        <div class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                            <span class="text-blue-600 font-medium">🎬 บรรยากาศ 3</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/share/v/1AdtX8apuz/" target="_blank" class="bg-white p-4 rounded-2xl card-shadow hover:scale-105 transition-transform group">
+                        <div class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                            <span class="text-blue-600 font-medium">🎬 บรรยากาศ 4</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Schedule Section -->
+        <section class="mb-16 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-200">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-blue-900 mb-2">กำหนดการกิจกรรม</h2>
+                <div class="h-1 w-20 bg-yellow-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto border-l-2 border-blue-200 ml-4 md:ml-auto">
+                <!-- Day 1 -->
+                <div class="mb-10 relative pl-8">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-blue-100">
+                        <h4 class="text-blue-900 font-bold text-lg mb-2 flex items-center">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm mr-3">วันศุกร์ที่ 16 มกราคม 2569</span>
+                        </h4>
+                        <div class="space-y-3">
+                            <div class="flex">
+                                <span class="font-bold text-blue-800 min-w-[80px]">09.30 น.</span>
+                                <div>
+                                    <p class="font-medium text-blue-900 leading-tight">พิธีทอดผ้าป่าเพื่อการศึกษา</p>
+                                    <p class="text-sm text-gray-500 mt-1 italic">ณ ห้องประชุมราชพฤกษ์ โรงเรียนประสารวิทยา</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="relative pl-8">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-blue-100">
+                        <h4 class="text-blue-900 font-bold text-lg mb-2 flex items-center">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-lg text-sm mr-3">วันเสาร์ที่ 17 มกราคม 2569</span>
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex">
+                                <span class="font-bold text-blue-800 min-w-[80px]">18.00 น.</span>
+                                <div>
+                                    <p class="font-medium text-lg text-blue-900">งานคืนสู่เหย้าชาวประสาร 45 ปี</p>
+                                    <p class="text-gray-600 text-sm">กิจกรรมกินเลี้ยง สังสรรค์ พบปะศิษย์เก่าทุกรุ่น</p>
+                                    <p class="text-xs text-gray-500 mt-2 italic underline decoration-yellow-500">ณ ลานอาคารอเนกประสงค์ โรงเรียนประสารวิทยา</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Updated News & Activities Section -->
+        <section class="mb-16">
+            <div class="flex items-center mb-10">
+                <div class="w-3 h-10 bg-blue-primary mr-4 rounded-full"></div>
+                <h2 class="text-3xl font-bold tracking-tight text-blue-900">อัปเดตข่าวสารกิจกรรม</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Announcement #1: Homecoming -->
+                <article class="flex flex-col bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100">
+                    <div class="bg-blue-primary p-8 text-white relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full"></div>
+                        <span class="bg-yellow-primary text-blue-900 px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase tracking-widest">ข่าวสารสำคัญ #1</span>
+                        <h3 class="text-2xl font-bold mb-2">พร้อมหรือยัง? ที่จะกลับไปเป็น "นักเรียน" อีกครั้ง!</h3>
+                        <p class="text-yellow-primary/90 font-medium italic text-sm">"45 ปี คืนสู่เหย้าชาวประสาร"</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-gray-700 space-y-4 leading-relaxed">
+                            <p>ในชีวิตจริงเราอาจจะเติบโตไปไกลตามคอนเซ็ปต์ <span class="font-bold text-blue-800">"BEYOND THE CLASSROOM เรียนรู้อย่างต่อเนื่องจากห้องเรียนสู่โลกกว้าง"</span> แต่มีสิ่งหนึ่งที่ไม่เคยเปลี่ยนเลย คือ... <span class="italic">"ความทรงจำดี ๆ"</span> ในรั้วประสารแห่งนี้</p>
+                            <p>กลับมาร่วมสร้างรอยยิ้ม เสียงหัวเราะ และความประทับใจให้หัวใจพองโตอีกครั้ง กับบรรยากาศที่อบอุ่น คุ้นเคย เหมือนวันวานที่ไม่มีวันจางหาย</p>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                                <p class="text-[10px] text-blue-500 font-bold uppercase mb-1">วัน/เวลา</p>
+                                <p class="text-sm font-bold text-blue-900">17 ม.ค. 69 <br>18.00 น. เป็นต้นไป</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-2xl border border-yellow-100">
+                                <p class="text-[10px] text-yellow-600 font-bold uppercase mb-1">ราคาโต๊ะจีน</p>
+                                <p class="text-sm font-bold text-blue-900">3,200.- <br><span class="text-[10px] font-normal">(8 ที่นั่ง/โต๊ะ)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-6 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
+                            <p class="text-blue-900 font-bold mb-3 text-center">สนใจจองบัตร/โต๊ะ ติดต่อ:</p>
+                            <div class="flex flex-col items-center gap-2">
+                                <a href="tel:0863690405" class="flex items-center gap-2 text-blue-800 hover:scale-105 transition-transform">
+                                    <span class="text-lg">📞</span> <span class="font-bold">086-369-0405</span>
+                                </a>
+                                <div class="flex items-center gap-2 text-green-700">
+                                    <span class="text-lg">💬</span> LINE ID: <span class="font-bold">prasarnwittaya</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Announcement #2: Phapa -->
+                <article class="flex flex-col bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100">
+                    <div class="bg-yellow-primary p-8 text-blue-900 relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-900/5 rounded-full"></div>
+                        <span class="bg-blue-primary text-white px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase tracking-widest">ข่าวสารสำคัญ #2</span>
+                        <h3 class="text-2xl font-bold mb-2 leading-tight">ขอเชิญร่วมเป็นเจ้าภาพ <br>ทอดผ้าป่าเพื่อการศึกษา</h3>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-700 mb-6 italic leading-relaxed">เพื่อสมทบทุนจัดซื้อ <span class="font-bold text-blue-900">อุปกรณ์วงดุริยางค์</span> เพื่อเป็นแรงสนับสนุนส่งเสริมศักยภาพของนักเรียนให้ก้าวสู่ความเป็นเลิศทางดนตรี</p>
+                        
+                        <div class="mb-8 p-4 bg-blue-900 text-white rounded-2xl relative">
+                            <div class="flex justify-between items-center mb-4 border-b border-blue-700 pb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider text-yellow-primary">ช่องทางการบริจาค</span>
+                                <span class="text-[10px] opacity-70 italic">K-BANK</span>
+                            </div>
+                            <div class="text-center py-2">
+                                <p class="text-xs opacity-80 mb-1">ชื่อบัญชี: โรงเรียนประสารวิทยา</p>
+                                <p class="text-2xl font-bold tracking-[0.15em] text-yellow-primary">138-8-04979-7</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-blue-700 flex items-center justify-center gap-2">
+                                <span class="bg-green-500 text-white text-[10px] px-2 py-0.5 rounded font-bold">E-Donation</span>
+                                <p class="text-[10px] italic">สแกน QR CODE ลดหย่อนภาษีได้ 2 เท่า</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-blue-900 text-sm border-b pb-2">ผู้ประสานงาน:</h4>
+                            <div class="grid grid-cols-1 gap-3">
+                                <div class="flex justify-between items-center text-sm p-3 bg-gray-50 rounded-xl hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-blue-100">
+                                    <span class="font-medium text-gray-700">ครูสุภาพร (ครูองุ่น)</span>
+                                    <a href="tel:0813938766" class="font-bold text-blue-700">081-393-8766</a>
+                                </div>
+                                <div class="flex justify-between items-center text-sm p-3 bg-gray-50 rounded-xl hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-blue-100">
+                                    <span class="font-medium text-gray-700">ครูสุพัชชา (ครูหน่อย)</span>
+                                    <a href="tel:0810698247" class="font-bold text-blue-700">081-069-8247</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 border-t py-12 text-center text-blue-900">
+        <div class="max-w-4xl mx-auto px-4">
+            <img src="0.jpg" alt="โลโก้โรงเรียนประสารวิทยา" class="h-16 mx-auto mb-4 opacity-80 grayscale hover:grayscale-0 transition-all cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <h3 class="font-bold mb-2 text-xl tracking-tight uppercase">Prasarnwittaya School</h3>
+            <p class="text-sm text-gray-500 italic mb-6 leading-relaxed">" Beyond The Classroom เรียนรู้อย่างต่อเนื่องจากห้องเรียนสู่โลกกว้าง "</p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm font-medium mb-8">
+                <span class="text-blue-800 font-bold bg-white px-4 py-2 rounded-full shadow-sm">☎️ 086-369-0405</span>
+                <span class="text-green-700 font-bold bg-white px-4 py-2 rounded-full shadow-sm">💬 LINE: prasarnwittaya</span>
+            </div>
+            <p class="text-[11px] text-gray-500 font-bold tracking-[0.2em] uppercase px-4 leading-relaxed max-w-lg mx-auto">
+                &copy; 2026 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL <br>ALL RIGHTS RESERVED
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const targetDate = new Date("January 17, 2026 18:00:00").getTime();
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? (days < 0 ? "00" : "0" + days) : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? (hours < 0 ? "00" : "0" + hours) : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? (minutes < 0 ? "00" : "0" + minutes) : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? (seconds < 0 ? "00" : "0" + seconds) : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<h3 class='text-2xl font-bold text-yellow-primary animate-bounce'>Welcome Homecoming Day!</h3>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
