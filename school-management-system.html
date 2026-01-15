@@ -59,7 +59,6 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Smooth reveal animation */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -69,31 +68,41 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Language Button Active State */
+        .lang-btn.active {
+            background-color: #facc15;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
     <!-- Navigation Bar -->
     <nav class="bg-school-blue text-white sticky top-0 z-[100] shadow-xl border-b-4 border-school-yellow">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div class="container mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-3">
             <div class="flex items-center space-x-3">
                 <div class="shrink-0">
                     <img src="PSCC NO BG.png" alt="School Logo" class="w-12 h-12 object-contain" onerror="this.src='https://via.placeholder.com/150?text=PSCC'">
                 </div>
                 <div class="flex flex-col border-l border-white/20 pl-3">
-                    <!-- อัปเดตส่วนหัวบนสุด -->
-                    <span class="font-bold text-xs md:text-sm tracking-tight leading-tight text-white uppercase">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
+                    <span id="nav-title-th" class="lang-content font-bold text-[10px] md:text-sm tracking-tight leading-tight text-white uppercase">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</span>
                     <span class="text-[9px] md:text-[10px] text-school-yellow opacity-90 font-light uppercase tracking-wider italic">STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024)</span>
                 </div>
             </div>
-            <div class="flex items-center space-x-4 md:space-x-6">
-                <!-- ปุ่ม GO BACK -->
-                <a href="index.html" class="text-[10px] md:text-xs text-slate-300 hover:text-white transition flex items-center gap-1 opacity-80 hover:opacity-100">
-                    <i class="fas fa-chevron-left"></i> GO BACK
-                </a>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Language Switcher -->
+                <div class="flex bg-blue-950/50 rounded-lg p-1 border border-white/10">
+                    <button onclick="changeLang('th')" id="btn-th" class="lang-btn active px-3 py-1 text-xs rounded-md transition-all">TH</button>
+                    <button onclick="changeLang('en')" id="btn-en" class="lang-btn px-3 py-1 text-xs rounded-md transition-all">EN</button>
+                    <button onclick="changeLang('cn')" id="btn-cn" class="lang-btn px-3 py-1 text-xs rounded-md transition-all">CN</button>
+                </div>
+                
                 <div class="h-4 w-[1px] bg-slate-600 hidden md:block"></div>
-                <!-- ปุ่ม SCHOOL BRIGHT -->
-                <a href="#beyond-classroom" class="hover:text-school-yellow transition text-school-yellow border-b-2 border-school-yellow pb-1 font-medium text-sm md:text-base uppercase">
+                
+                <a href="#beyond-classroom" class="hover:text-school-yellow transition text-school-yellow border-b-2 border-school-yellow pb-1 font-medium text-sm md:text-base uppercase tracking-wider">
                     SCHOOL BRIGHT
                 </a>
             </div>
@@ -104,17 +113,17 @@
     <header id="home" class="hero-gradient text-white py-20 px-4 text-center">
         <div class="container mx-auto max-w-5xl">
             <div class="mb-8 inline-block">
-                <span class="anniversary-badge text-blue-900 px-8 py-2.5 rounded-full font-bold text-xs md:text-sm tracking-[0.1em] uppercase">
+                <span id="hero-badge" class="anniversary-badge text-blue-900 px-8 py-2.5 rounded-full font-bold text-xs md:text-sm tracking-[0.1em] uppercase">
                     SCHOOL MANAGEMENT SYSTEM BY SCHOOL BRIGHT
                 </span>
             </div>
             <h1 class="text-5xl md:text-8xl font-black mb-6 drop-shadow-2xl leading-tight uppercase italic tracking-tighter">
                 SCHOOL <span class="text-school-yellow">BRIGHT</span>
             </h1>
-            <p class="text-2xl md:text-4xl mb-10 font-bold text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            <p id="hero-subtitle" class="text-2xl md:text-4xl mb-10 font-bold text-blue-100 max-w-3xl mx-auto leading-relaxed">
                 " ระบบบริหารโรงเรียนดิจิทัล "
             </p>
-            <a href="#beyond-classroom" class="inline-block bg-school-yellow text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-white transition shadow-lg hover:shadow-school-yellow/20">
+            <a href="#beyond-classroom" id="hero-cta" class="inline-block bg-school-yellow text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-white transition shadow-lg hover:shadow-school-yellow/20">
                 สำรวจระบบดิจิทัล
             </a>
         </div>
@@ -125,16 +134,15 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-6xl font-black text-blue-900 mb-2 uppercase italic tracking-tight">SCHOOL BRIGHT</h2>
-                <p class="text-xl md:text-2xl text-school-blue font-semibold mb-6">" ระบบบริหารโรงเรียนดิจิทัล "</p>
+                <p id="content-subtitle" class="text-xl md:text-2xl text-school-blue font-semibold mb-6">" ระบบบริหารโรงเรียนดิจิทัล "</p>
                 <div class="h-1.5 w-32 bg-school-yellow mx-auto rounded-full mb-10"></div>
                 
-                <!-- Quote Section -->
                 <div class="max-w-4xl mx-auto bg-slate-50 p-10 rounded-[2.5rem] border-l-8 border-school-blue relative shadow-inner mb-20">
                     <i class="fas fa-quote-left absolute top-6 left-6 text-slate-200 text-6xl opacity-50"></i>
-                    <p class="text-xl md:text-3xl text-slate-700 leading-relaxed relative z-10 italic font-light">
+                    <p id="quote-text" class="text-xl md:text-3xl text-slate-700 leading-relaxed relative z-10 italic font-light">
                         "ยกระดับการบริหารจัดการสถานศึกษาด้วยเทคโนโลยีที่ทันสมัย เพื่อสร้างอนาคตที่ดีกว่าให้กับนักเรียนและบุคลากรทางการศึกษาทุกคน"
                     </p>
-                    <p class="mt-6 font-bold text-school-blue text-xl">— SCHOOL BRIGHT TEAM</p>
+                    <p id="quote-author" class="mt-6 font-bold text-school-blue text-xl">— SCHOOL BRIGHT TEAM</p>
                 </div>
             </div>
 
@@ -143,82 +151,61 @@
                 <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">01</span>
-                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ทำไมต้องเลือก SCHOOL BRIGHT?</h4>
+                        <h4 id="q1-title" class="font-bold text-blue-900 text-xl leading-snug">ทำไมต้องเลือก SCHOOL BRIGHT?</h4>
                     </div>
-                    <p class="text-slate-600 leading-relaxed pl-14">เพราะเป็นระบบที่ออกแบบมาเพื่อโรงเรียนไทยโดยเฉพาะ ครอบคลุมทุกมิติการบริหารจัดการ ทั้งงานวิชาการ งานปกครอง และงานธุรการในแพลตฟอร์มเดียว</p>
+                    <p id="q1-desc" class="text-slate-600 leading-relaxed pl-14">เพราะเป็นระบบที่ออกแบบมาเพื่อโรงเรียนไทยโดยเฉพาะ ครอบคลุมทุกมิติการบริหารจัดการ ทั้งงานวิชาการ งานปกครอง และงานธุรการในแพลตฟอร์มเดียว</p>
                 </div>
 
                 <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">02</span>
-                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ระบบช่วยลดภาระครูได้อย่างไร?</h4>
+                        <h4 id="q2-title" class="font-bold text-blue-900 text-xl leading-snug">ระบบช่วยลดภาระครูได้อย่างไร?</h4>
                     </div>
-                    <p class="text-slate-600 leading-relaxed pl-14">ด้วยระบบอัตโนมัติในการเช็คชื่อ กรอกคะแนน และออกรายงาน ปพ. ต่างๆ ช่วยให้ครูมีเวลาโฟกัสกับการพัฒนาการเรียนการสอนของนักเรียนได้มากขึ้น</p>
+                    <p id="q2-desc" class="text-slate-600 leading-relaxed pl-14">ด้วยระบบอัตโนมัติในการเช็คชื่อ กรอกคะแนน และออกรายงาน ปพ. ต่างๆ ช่วยให้ครูมีเวลาโฟกัสกับการพัฒนาการเรียนการสอนของนักเรียนได้มากขึ้น</p>
                 </div>
 
                 <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">03</span>
-                        <h4 class="font-bold text-blue-900 text-xl leading-snug">การสื่อสารระหว่างโรงเรียนและผู้ปกครอง</h4>
+                        <h4 id="q3-title" class="font-bold text-blue-900 text-xl leading-snug">การสื่อสารระหว่างโรงเรียนและผู้ปกครอง</h4>
                     </div>
-                    <p class="text-slate-600 leading-relaxed pl-14">ผู้ปกครองสามารถติดตามผลการเรียน พฤติกรรม และข่าวสารจากทางโรงเรียนได้แบบ Real-time ผ่านแอปพลิเคชันมือถือ สร้างความมั่นใจในความปลอดภัยของบุตรหลาน</p>
+                    <p id="q3-desc" class="text-slate-600 leading-relaxed pl-14">ผู้ปกครองสามารถติดตามผลการเรียน พฤติกรรม และข่าวสารจากทางโรงเรียนได้แบบ Real-time ผ่านแอปพลิเคชันมือถือ สร้างความมั่นใจในความปลอดภัยของบุตรหลาน</p>
                 </div>
 
                 <div class="qa-card bg-slate-50 p-8 rounded-3xl border border-slate-100 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-school-blue text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg shadow-blue-900/20">04</span>
-                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ความปลอดภัยของข้อมูล</h4>
+                        <h4 id="q4-title" class="font-bold text-blue-900 text-xl leading-snug">ความปลอดภัยของข้อมูล</h4>
                     </div>
-                    <p class="text-slate-600 leading-relaxed pl-14">ข้อมูลทั้งหมดถูกจัดเก็บด้วยระบบ Cloud ที่มีมาตรฐานความปลอดภัยสูง มีการสำรองข้อมูลอย่างสม่ำเสมอ และจำกัดสิทธิ์การเข้าถึงข้อมูลตามบทบาทหน้าที่</p>
+                    <p id="q4-desc" class="text-slate-600 leading-relaxed pl-14">ข้อมูลทั้งหมดถูกจัดเก็บด้วยระบบ Cloud ที่มีมาตรฐานความปลอดภัยสูง มีการสำรองข้อมูลอย่างสม่ำเสมอ และจำกัดสิทธิ์การเข้าถึงข้อมูลตามบทบาทหน้าที่</p>
                 </div>
 
                 <div class="qa-card bg-blue-900 text-white p-8 rounded-3xl shadow-xl shadow-blue-900/30 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-school-yellow text-blue-900 w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0">05</span>
-                        <h4 class="font-bold text-school-yellow text-xl leading-snug">ฟีเจอร์เด่น: ระบบเช็คชื่ออัจฉริยะ</h4>
+                        <h4 id="q5-title" class="font-bold text-school-yellow text-xl leading-snug">ฟีเจอร์เด่น: ระบบเช็คชื่ออัจฉริยะ</h4>
                     </div>
-                    <p class="text-blue-100 leading-relaxed pl-14 font-light">รองรับทั้งการสแกนใบหน้า การ์ด หรือผ่านแอปพลิเคชัน พร้อมส่งข้อความแจ้งเตือนถึงผู้ปกครองทันทีเมื่อนักเรียนเข้าหรือออกจากโรงเรียน</p>
+                    <p id="q5-desc" class="text-blue-100 leading-relaxed pl-14 font-light">รองรับทั้งการสแกนใบหน้า การ์ด หรือผ่านแอปพลิเคชัน พร้อมส่งข้อความแจ้งเตือนถึงผู้ปกครองทันทีเมื่อนักเรียนเข้าหรือออกจากโรงเรียน</p>
                 </div>
 
                 <div class="qa-card bg-school-yellow p-8 rounded-3xl shadow-xl shadow-yellow-500/20 reveal">
                     <div class="flex items-start mb-4">
                         <span class="bg-blue-900 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0">06</span>
-                        <h4 class="font-bold text-blue-900 text-xl leading-snug">ก้าวสู่โรงเรียนไร้กระดาษ (Paperless)</h4>
+                        <h4 id="q6-title" class="font-bold text-blue-900 text-xl leading-snug">ก้าวสู่โรงเรียนไร้กระดาษ (Paperless)</h4>
                     </div>
-                    <p class="text-blue-900/80 leading-relaxed pl-14 font-medium">เปลี่ยนเอกสารราชการและงานธุรการให้เป็นรูปแบบดิจิทัลทั้งหมด ลดค่าใช้จ่าย ลดขั้นตอน และเพิ่มประสิทธิภาพการทำงานสูงสุด</p>
+                    <p id="q6-desc" class="text-blue-900/80 leading-relaxed pl-14 font-medium">เปลี่ยนเอกสารราชการและงานธุรการให้เป็นรูปแบบดิจิทัลทั้งหมด ลดค่าใช้จ่าย ลดขั้นตอน และเพิ่มประสิทธิภาพการทำงานสูงสุด</p>
                 </div>
             </div>
 
-            <!-- Conclusion Quote -->
             <div class="mt-20 text-center max-w-4xl mx-auto border-t-2 border-slate-100 pt-16 mb-24 reveal">
-                <p class="text-xl md:text-3xl text-blue-900 leading-relaxed font-light italic">
+                <p id="final-quote" class="text-xl md:text-3xl text-blue-900 leading-relaxed font-light italic">
                     "เทคโนโลยีไม่ได้มาแทนที่ครู แต่จะมาช่วยให้ครูทำงานได้ง่ายขึ้น เพื่อเป้าหมายสูงสุดคือคุณภาพชีวิตและการศึกษาของนักเรียนทุกคนในยุคดิจิทัล"
                 </p>
                 <div class="mt-8 flex flex-col items-center">
                     <div class="h-1 w-12 bg-school-yellow mb-4"></div>
-                    <p class="font-bold text-school-blue text-xl">— SCHOOL BRIGHT</p>
+                    <p id="final-author" class="font-bold text-school-blue text-xl">— SCHOOL BRIGHT</p>
                 </div>
             </div>
-
-            <!-- Video Section -->
-            <div class="max-w-5xl mx-auto mb-24 reveal">
-                <div class="text-center mb-10">
-                    <h3 class="text-2xl md:text-3xl font-bold text-blue-900 uppercase tracking-widest flex items-center justify-center">
-                        <span class="w-8 h-[2px] bg-red-600 mr-4"></span>
-                        <i class="fab fa-youtube text-red-600 mr-3"></i> วิดีโอแนะนำระบบ
-                        <span class="w-8 h-[2px] bg-red-600 ml-4"></span>
-                    </h3>
-                </div>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/watch?v=IQSZLOvvin4" 
-                        title="SCHOOL BRIGHT SYSTEM" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -229,30 +216,133 @@
                 <div class="mx-auto mb-6 w-24 h-24 bg-white rounded-full p-2 shadow-2xl">
                     <img src="PSCC NO BG.png" alt="Footer Logo" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/150'">
                 </div>
-                <!-- อัปเดตส่วนท้าย -->
-                <h4 class="font-bold text-xl md:text-2xl uppercase tracking-wider text-school-yellow mb-2">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
+                <h4 id="footer-title" class="font-bold text-xl md:text-2xl uppercase tracking-wider text-school-yellow mb-2">คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567</h4>
                 <p class="text-slate-400 text-xs md:text-sm font-light uppercase tracking-[0.3em] mb-6">STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL (2024)</p>
                 <div class="flex items-center justify-center text-slate-400 gap-2 text-sm">
                     <i class="fas fa-map-marker-alt text-school-yellow"></i>
-                    <span>162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140</span>
+                    <span id="footer-address">162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140</span>
                 </div>
             </div>
             
-            <div class="flex justify-center space-x-8 mb-12 text-2xl">
-                <a href="#" class="text-slate-500 hover:text-blue-500 transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-slate-500 hover:text-green-500 transition-colors"><i class="fab fa-line"></i></a>
-                <a href="#" class="text-slate-500 hover:text-red-600 transition-colors"><i class="fab fa-youtube"></i></a>
-            </div>
-
             <div class="border-t border-slate-800 pt-10">
                 <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-medium leading-relaxed max-w-2xl mx-auto">
-                    &copy; 2026 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL. ALL RIGHTS RESERVED.
+                    &copy; 2024 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL. ALL RIGHTS RESERVED.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
+        const translations = {
+            th: {
+                nav_title: "คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567",
+                hero_badge: "SCHOOL MANAGEMENT SYSTEM BY SCHOOL BRIGHT",
+                hero_subtitle: '" ระบบบริหารโรงเรียนดิจิทัล "',
+                hero_cta: "สำรวจระบบดิจิทัล",
+                content_subtitle: '" ระบบบริหารโรงเรียนดิจิทัล "',
+                quote_text: '"ยกระดับการบริหารจัดการสถานศึกษาด้วยเทคโนโลยีที่ทันสมัย เพื่อสร้างอนาคตที่ดีกว่าให้กับนักเรียนและบุคลากรทางการศึกษาทุกคน"',
+                quote_author: "— ทีมงาน SCHOOL BRIGHT",
+                q1_t: "ทำไมต้องเลือก SCHOOL BRIGHT?",
+                q1_d: "เพราะเป็นระบบที่ออกแบบมาเพื่อโรงเรียนไทยโดยเฉพาะ ครอบคลุมทุกมิติการบริหารจัดการ ทั้งงานวิชาการ งานปกครอง และงานธุรการในแพลตฟอร์มเดียว",
+                q2_t: "ระบบช่วยลดภาระครูได้อย่างไร?",
+                q2_d: "ด้วยระบบอัตโนมัติในการเช็คชื่อ กรอกคะแนน และออกรายงาน ปพ. ต่างๆ ช่วยให้ครูมีเวลาโฟกัสกับการพัฒนาการเรียนการสอนของนักเรียนได้มากขึ้น",
+                q3_t: "การสื่อสารระหว่างโรงเรียนและผู้ปกครอง",
+                q3_d: "ผู้ปกครองสามารถติดตามผลการเรียน พฤติกรรม และข่าวสารจากทางโรงเรียนได้แบบ Real-time ผ่านแอปพลิเคชันมือถือ สร้างความมั่นใจในความปลอดภัยของบุตรหลาน",
+                q4_t: "ความปลอดภัยของข้อมูล",
+                q4_d: "ข้อมูลทั้งหมดถูกจัดเก็บด้วยระบบ Cloud ที่มีมาตรฐานความปลอดภัยสูง มีการสำรองข้อมูลอย่างสม่ำเสมอ และจำกัดสิทธิ์การเข้าถึงข้อมูลตามบทบาทหน้าที่",
+                q5_t: "ฟีเจอร์เด่น: ระบบเช็คชื่ออัจฉริยะ",
+                q5_d: "รองรับทั้งการสแกนใบหน้า การ์ด หรือผ่านแอปพลิเคชัน พร้อมส่งข้อความแจ้งเตือนถึงผู้ปกครองทันทีเมื่อนักเรียนเข้าหรือออกจากโรงเรียน",
+                q6_t: "ก้าวสู่โรงเรียนไร้กระดาษ (Paperless)",
+                q6_d: "เปลี่ยนเอกสารราชการและงานธุรการให้เป็นรูปแบบดิจิทัลทั้งหมด ลดค่าใช้จ่าย ลดขั้นตอน และเพิ่มประสิทธิภาพการทำงานสูงสุด",
+                final_quote: '"เทคโนโลยีไม่ได้มาแทนที่ครู แต่จะมาช่วยให้ครูทำงานได้ง่ายขึ้น เพื่อเป้าหมายสูงสุดคือคุณภาพชีวิตและการศึกษาของนักเรียนทุกคนในยุคดิจิทัล"',
+                final_author: "— SCHOOL BRIGHT",
+                footer_title: "คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567",
+                footer_addr: "162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140"
+            },
+            en: {
+                nav_title: "Student Council of Prasarnwittaya School Academic Year 2024",
+                hero_badge: "SCHOOL MANAGEMENT SYSTEM BY SCHOOL BRIGHT",
+                hero_subtitle: '" Digital School Management System "',
+                hero_cta: "Explore Digital System",
+                content_subtitle: '" Digital School Management System "',
+                quote_text: '"Elevating educational management with modern technology to create a better future for students and all educational personnel."',
+                quote_author: "— SCHOOL BRIGHT TEAM",
+                q1_t: "Why choose SCHOOL BRIGHT?",
+                q1_d: "Because it's a system designed specifically for schools, covering all dimensions of management: academic, administrative, and student affairs in one platform.",
+                q2_t: "How does the system reduce teacher workload?",
+                q2_d: "With automated systems for attendance, grading, and reporting, teachers have more time to focus on developing student learning.",
+                q3_t: "School-Parent Communication",
+                q3_d: "Parents can track grades, behavior, and school news in real-time via mobile app, ensuring the safety and progress of their children.",
+                q4_t: "Data Security",
+                q4_d: "All data is stored in high-standard Cloud systems with regular backups and role-based access control.",
+                q5_t: "Highlight: Smart Attendance System",
+                q5_d: "Supports face scan, card, or app, with instant notification to parents when students enter or leave the school.",
+                q6_t: "Towards Paperless School",
+                q6_d: "Transform all documents and administrative tasks into digital format, reducing costs, steps, and maximizing efficiency.",
+                final_quote: '"Technology doesn\'t replace teachers, but it helps them work easier for the ultimate goal: quality of life and education for students in the digital age."',
+                final_author: "— SCHOOL BRIGHT",
+                footer_title: "Student Council of Prasarnwittaya School Academic Year 2024",
+                footer_addr: "162/5 Moo 14, Sikhio, Sikhio District, Nakhon Ratchasima 30140"
+            },
+            cn: {
+                nav_title: "Prasarnwittaya 学校学生会 2024学年",
+                hero_badge: "SCHOOL BRIGHT 学校管理系统",
+                hero_subtitle: '" 数字化学校管理系统 "',
+                hero_cta: "探索数字化系统",
+                content_subtitle: '" 数字化学校管理系统 "',
+                quote_text: '"用现代技术提升教育管理，为学生和全体教职员工创造更美好的未来。"',
+                quote_author: "— SCHOOL BRIGHT 团队",
+                q1_t: "为什么选择 SCHOOL BRIGHT？",
+                q1_d: "因为它是专门为学校设计的系统，在一个平台中涵盖了管理的所有维度：教务、行政和学生事务。",
+                q2_t: "系统如何减轻教师的工作量？",
+                q2_d: "通过出勤、评分和报告的自动化系统，教师有更多的时间专注于学生学习的发展。",
+                q3_t: "家校沟通",
+                q3_d: "家长可以通过手机应用程序实时跟踪成绩、行为和学校新闻，确保孩子的安全和进步。",
+                q4_t: "数据安全",
+                q4_d: "所有数据都存储在具有高度安全标准的云系统中，并进行定期备份和基于角色的访问控制。",
+                q5_t: "亮点：智能考勤系统",
+                q5_d: "支持人脸识别、刷卡或应用程序，学生进校或离校时立即通知家长。",
+                q6_t: "迈向无纸化学校",
+                q6_d: "将所有文件和行政任务转化为数字化格式，降低成本，简化步骤，并最大化效率。",
+                final_quote: '"技术不会取代老师，但它会帮助老师更轻松地工作，以实现最终目标：数字化时代学生的教育质量。"',
+                final_author: "— SCHOOL BRIGHT",
+                footer_title: "Prasarnwittaya 学校学生会 2024学年",
+                footer_addr: "162/5 Moo 14, Sikhio, Sikhio District, Nakhon Ratchasima 30140"
+            }
+        };
+
+        function changeLang(lang) {
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update Content
+            const t = translations[lang];
+            document.getElementById('nav-title-th').textContent = t.nav_title;
+            document.getElementById('hero-badge').textContent = t.hero_badge;
+            document.getElementById('hero-subtitle').textContent = t.hero_subtitle;
+            document.getElementById('hero-cta').textContent = t.hero_cta;
+            document.getElementById('content-subtitle').textContent = t.content_subtitle;
+            document.getElementById('quote-text').textContent = t.quote_text;
+            document.getElementById('quote-author').textContent = t.quote_author;
+            document.getElementById('q1-title').textContent = t.q1_t;
+            document.getElementById('q1-desc').textContent = t.q1_d;
+            document.getElementById('q2-title').textContent = t.q2_t;
+            document.getElementById('q2-desc').textContent = t.q2_d;
+            document.getElementById('q3-title').textContent = t.q3_t;
+            document.getElementById('q3-desc').textContent = t.q3_d;
+            document.getElementById('q4-title').textContent = t.q4_t;
+            document.getElementById('q4-desc').textContent = t.q4_d;
+            document.getElementById('q5-title').textContent = t.q5_t;
+            document.getElementById('q5-desc').textContent = t.q5_d;
+            document.getElementById('q6-title').textContent = t.q6_t;
+            document.getElementById('q6-desc').textContent = t.q6_d;
+            document.getElementById('final-quote').textContent = t.final_quote;
+            document.getElementById('final-author').textContent = t.final_author;
+            document.getElementById('footer-title').textContent = t.footer_title;
+            document.getElementById('footer-address').textContent = t.footer_addr;
+        }
+
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
