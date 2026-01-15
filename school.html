@@ -43,11 +43,16 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
         }
 
-        /* Language Switcher Styles */
+        .lang-btn {
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
         .lang-btn.active {
             background-color: #facc15;
             color: #1e3a8a;
             font-weight: bold;
+            border-color: #facc15;
         }
     </style>
 </head>
@@ -65,12 +70,12 @@
                     <span class="text-[10px] md:text-xs text-school-yellow opacity-90 font-light uppercase tracking-widest">Student Council of Prasarnwittaya School (2024)</span>
                 </div>
             </div>
-            
+
             <!-- Language Selector -->
-            <div class="flex items-center space-x-2 bg-blue-900/50 p-1 rounded-lg">
-                <button onclick="changeLang('th')" id="btn-th" class="lang-btn px-3 py-1 text-xs rounded transition active">TH</button>
-                <button onclick="changeLang('en')" id="btn-en" class="lang-btn px-3 py-1 text-xs rounded transition">EN</button>
-                <button onclick="changeLang('zh')" id="btn-zh" class="lang-btn px-3 py-1 text-xs rounded transition">ZH</button>
+            <div class="flex items-center space-x-2 bg-blue-900/50 p-1 rounded-lg border border-white/10">
+                <button onclick="switchLanguage('th')" id="btn-th" class="lang-btn active px-3 py-1 rounded text-xs">TH</button>
+                <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn px-3 py-1 rounded text-xs">EN</button>
+                <button onclick="switchLanguage('zh')" id="btn-zh" class="lang-btn px-3 py-1 rounded text-xs">ZH</button>
             </div>
 
             <div class="flex items-center space-x-6">
@@ -93,11 +98,11 @@
                     SCHOOL INFORMATION
                 </span>
             </div>
-            <h1 id="hero-title" class="text-4xl md:text-6xl font-black mb-4 drop-shadow-2xl">โรงเรียนประสารวิทยา</h1>
+            <h1 id="hero-name" class="text-4xl md:text-6xl font-black mb-4 drop-shadow-2xl">โรงเรียนประสารวิทยา</h1>
             <p id="hero-motto" class="text-lg md:text-xl font-light text-blue-100 max-w-3xl mx-auto mb-2">
                 "เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ"
             </p>
-            <p class="text-school-yellow font-bold tracking-widest"><span id="hero-abbr-label">อักษรย่อ</span> : <span id="hero-abbr-val">ป.ว.</span></p>
+            <p class="text-school-yellow font-bold tracking-widest"><span id="hero-abbr-text">อักษรย่อ</span> : <span id="hero-abbr-val">ป.ว.</span></p>
         </div>
     </header>
 
@@ -117,14 +122,14 @@
                                 <div class="w-12 h-12 rounded-lg bg-blue-600 border-2 border-white shrink-0 shadow-md"></div>
                                 <div>
                                     <p id="blue-label" class="font-bold text-blue-200">สีน้ำเงิน</p>
-                                    <p id="blue-desc" class="text-sm opacity-90 font-light">หมายถึง ผู้ที่มีความเชื่อมั่น มีความสงบสุข</p>
+                                    <p id="blue-meaning" class="text-sm opacity-90 font-light">หมายถึง ผู้ที่มีความเชื่อมั่น มีความสงบสุข</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
                                 <div class="w-12 h-12 rounded-lg bg-yellow-400 border-2 border-white shrink-0 shadow-md"></div>
                                 <div>
                                     <p id="yellow-label" class="font-bold text-yellow-200">สีเหลือง</p>
-                                    <p id="yellow-desc" class="text-sm opacity-90 font-light">หมายถึง ความสง่างาม มีปัญญาและศีลธรรม</p>
+                                    <p id="yellow-meaning" class="text-sm opacity-90 font-light">หมายถึง ความสง่างาม มีปัญญาและศีลธรรม</p>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +138,14 @@
                 </div>
 
                 <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-center">
-                    <h2 id="loc-title" class="text-2xl font-bold mb-4 text-slate-800 flex items-center gap-3">
+                    <h2 id="addr-title" class="text-2xl font-bold mb-4 text-slate-800 flex items-center gap-3">
                         <i class="fas fa-map-marked-alt text-school-blue"></i> ที่ตั้งสถานศึกษา
                     </h2>
-                    <p id="loc-address" class="text-slate-600 leading-relaxed text-lg">
+                    <p id="addr-detail" class="text-slate-600 leading-relaxed text-lg">
                         เลขที่ 162/5 หมู่ที่ 14 ถนนรื่นจิตร ตำบลสีคิ้ว <br>
                         อำเภอสีคิ้ว จังหวัดนครราชสีมา 30140
                     </p>
-                    <div id="loc-sub" class="mt-6 flex items-center gap-2 text-school-blue font-semibold">
+                    <div id="addr-tagline" class="mt-6 flex items-center gap-2 text-school-blue font-semibold">
                         <i class="fas fa-school"></i> สังคมการเรียนรู้อบอุ่น ณ ใจกลางสีคิ้ว
                     </div>
                 </div>
@@ -153,7 +158,7 @@
                     <h2 id="hist-title" class="text-3xl font-bold">ประวัติโดยย่อ</h2>
                 </div>
                 <div id="hist-content" class="prose prose-slate max-w-none text-slate-600 leading-loose space-y-6">
-                    <!-- Dynamic Content -->
+                    <!-- Content injected by JS -->
                 </div>
             </div>
 
@@ -164,9 +169,9 @@
                     <h2 id="fac-title" class="text-3xl font-bold">แหล่งเรียนรู้และห้องปฏิบัติการ</h2>
                 </div>
                 <div id="fac-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Dynamic Grid Content -->
+                    <!-- Content injected by JS -->
                 </div>
-                <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
+                <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl shadow-sm">
                     <p id="award-text" class="text-blue-800 font-semibold italic">
                         <i class="fas fa-medal mr-2"></i> สถานศึกษาที่ได้รับรางวัลพระราชทานระดับก่อนประถมศึกษา (ขนาดใหญ่)
                     </p>
@@ -182,10 +187,10 @@
             <div class="bg-white w-20 h-20 rounded-2xl flex items-center justify-center mb-6 p-2 shadow-2xl mx-auto overflow-hidden">
                 <img src="PS NO BG mono.png" alt="Footer Logo" class="w-full h-full object-contain">
             </div>
-            <h4 id="footer-title" class="font-bold text-lg md:text-xl uppercase tracking-tighter text-school-yellow mb-2">
+            <h4 id="footer-head" class="font-bold text-lg md:text-xl uppercase tracking-tighter text-school-yellow mb-2">
                 คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567
             </h4>
-            <p id="footer-motto-addr" class="text-slate-400 text-sm mb-4 italic leading-relaxed">
+            <p id="footer-addr" class="text-slate-400 text-sm mb-4 italic leading-relaxed">
                 "เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ" <br>
                 162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140
             </p>
@@ -202,78 +207,78 @@
                 navBack: "GO BACK",
                 navInfoTag: "SCHOOL INFO",
                 heroBadge: "SCHOOL INFORMATION",
-                heroTitle: "โรงเรียนประสารวิทยา",
+                heroName: "โรงเรียนประสารวิทยา",
                 heroMotto: '"เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ"',
-                heroAbbrLabel: "อักษรย่อ",
+                heroAbbrText: "อักษรย่อ",
                 heroAbbrVal: "ป.ว.",
                 identTitle: "อัตลักษณ์และสีประจำโรงเรียน",
                 blueLabel: "สีน้ำเงิน",
-                blueDesc: "หมายถึง ผู้ที่มีความเชื่อมั่น มีความสงบสุข",
+                blueMeaning: "หมายถึง ผู้ที่มีความเชื่อมั่น มีความสงบสุข",
                 yellowLabel: "สีเหลือง",
-                yellowDesc: "หมายถึง ความสง่างาม มีปัญญาและศีลธรรม",
-                locTitle: "ที่ตั้งสถานศึกษา",
-                locAddress: "เลขที่ 162/5 หมู่ที่ 14 ถนนรื่นจิตร ตำบลสีคิ้ว <br> อำเภอสีคิ้ว จังหวัดนครราชสีมา 30140",
-                locSub: "สังคมการเรียนรู้อบอุ่น ณ ใจกลางสีคิ้ว",
+                yellowMeaning: "หมายถึง ความสง่างาม มีปัญญาและศีลธรรม",
+                addrTitle: "ที่ตั้งสถานศึกษา",
+                addrDetail: "เลขที่ 162/5 หมู่ที่ 14 ถนนรื่นจิตร ตำบลสีคิ้ว <br> อำเภอสีคิ้ว จังหวัดนครราชสีมา 30140",
+                addrTagline: "สังคมการเรียนรู้อบอุ่น ณ ใจกลางสีคิ้ว",
                 histTitle: "ประวัติโดยย่อ",
-                hist1: "<strong>โรงเรียนประสารวิทยา</strong> เป็นโรงเรียนเอกชนประเภทสามัญศึกษา สังกัดสำนักบริหารงานคณะกรรมการส่งเสริมการศึกษาเอกชน กระทรวงศึกษาธิการ จัดตั้งขึ้นโดย <strong>นางเครือวัลย์ วัลลิภากร</strong> ตามพระราชบัญญัติโรงเรียนเอกชน ใบอนุญาตเลขที่ 6 / 2523 ลงวันที่ 22 พฤษภาคม พ.ศ. 2523 เริ่มเปิดดำเนินการสอนครั้งแรกบนเนื้อที่ 2 ไร่ 2 งาน 24 ตารางวา ในระดับก่อนประถมศึกษาจนถึงประถมศึกษาปีที่ 6 รองรับนักเรียนได้ 450 คน",
-                hist2: "ในปัจจุบัน ภายใต้การบริหารงานของ <strong>นางจินตนา ลวิตรังสิมา</strong> (ผู้รับใบอนุญาตและผู้จัดการ) และ <strong>นางสาวปิยนุช ด่านกุล</strong> (ผู้อำนวยการสถานศึกษา) โรงเรียนได้ขยายพื้นที่เป็น <strong>13 ไร่</strong> มีอาคารเรียน 5 หลัง และอาคารเอนกประสงค์ 2 หลัง เปิดสอนตั้งแต่ระดับปฐมวัยจนถึงมัธยมศึกษาปีที่ 3 รองรับนักเรียนได้สูงสุดถึง 1,680 คน",
+                histP1: "<strong>โรงเรียนประสารวิทยา</strong> เป็นโรงเรียนเอกชนประเภทสามัญศึกษา สังกัดสำนักบริหารงานคณะกรรมการส่งเสริมการศึกษาเอกชน กระทรวงศึกษาธิการ จัดตั้งขึ้นโดย <strong>นางเครือวัลย์ วัลลิภากร</strong> ตามพระราชบัญญัติโรงเรียนเอกชน ใบอนุญาตเลขที่ 6 / 2523 ลงวันที่ 22 พฤษภาคม พ.ศ. 2523 มีเนื้อที่ 2 ไร่ 2 งาน 24 ตารางวา เปิดดำเนินการสอนตั้งแต่ระดับก่อนประถมศึกษา จนถึงระดับประถมศึกษาปีที่ 6 โดยมี นางเครือวัลย์ วัลลิภากร เป็นผู้รับใบอนุญาตและครูใหญ่ ความจุนักเรียนครั้งแรก 450 คน",
+                histP2: "ปัจจุบันโรงเรียนประสารวิทยา บริหารงานโดย <strong>นางจินตนา ลวิตรังสิมา</strong> เป็นผู้รับใบอนุญาต และ ผู้จัดการ <strong>นางสาวปิยนุช ด่านกุล</strong> เป็นผู้อำนวยการสถานศึกษา เปิดดำเนินการสอนตั้งแต่ระดับปฐมวัยจนถึงมัธยมศึกษาปีที่ 3 ความจุนักเรียน 1,680 คน มีเนื้อที่ 13 ไร่ มีอาคารเรียน 5 หลัง อาคารเอนกประสงค์ 2 หลัง",
                 facTitle: "แหล่งเรียนรู้และห้องปฏิบัติการ",
                 facs: ["ห้องปฏิบัติการทางภาษา", "ห้องวิทยาศาสตร์", "ห้องปฏิบัติการคอมพิวเตอร์", "สระว่ายน้ำ", "ห้องดนตรีไทย-สากล", "ห้องสมุด", "ห้องศิลปะ/นาฎศิลป์", "ห้องจริยธรรม"],
-                awardText: "สถานศึกษาที่ได้รับรางวัลพระราชทานระดับก่อนประถมศึกษา (ขนาดใหญ่)",
-                footerTitle: "คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567",
-                footerMottoAddr: '"เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ" <br> 162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140'
+                award: "สถานศึกษาที่ได้รับรางวัลพระราชทานระดับก่อนประถมศึกษา (ขนาดใหญ่)",
+                footerHead: "คณะกรรมการสภานักเรียนโรงเรียนประสารวิทยา ประจำปีการศึกษา 2567",
+                footerAddr: '"เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ" <br> 162/5 หมู่ 14 ต.สีคิ้ว อ.สีคิ้ว จ.นครราชสีมา 30140'
             },
             en: {
-                navTitle: "STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL ACADEMIC YEAR 2024",
+                navTitle: "Student Council Board of Prasarnwittaya School Academic Year 2024",
                 navBack: "GO BACK",
                 navInfoTag: "SCHOOL INFO",
                 heroBadge: "SCHOOL INFORMATION",
-                heroTitle: "Prasarnwittaya School",
-                heroMotto: '"Excellence, Discipline, Morality, Development"',
-                heroAbbrLabel: "Abbreviation",
+                heroName: "Prasarnwittaya School",
+                heroMotto: '"Academic Excellence, Discipline, Morality, Leading Development"',
+                heroAbbrText: "Abbreviation",
                 heroAbbrVal: "P.W.",
                 identTitle: "Identity and School Colors",
                 blueLabel: "Blue",
-                blueDesc: "Represents confidence and peacefulness",
+                blueMeaning: "Represents confidence and peacefulness",
                 yellowLabel: "Yellow",
-                yellowDesc: "Represents elegance, wisdom, and morality",
-                locTitle: "Location",
-                locAddress: "162/5 Moo 14, Ruenjit Road, Sikhio Subdistrict <br> Sikhio District, Nakhon Ratchasima 30140",
-                locSub: "A warm learning community in the heart of Sikhio",
-                histTitle: "Short History",
-                hist1: "<strong>Prasarnwittaya School</strong> is a private general education school under the Office of the Private Education Commission, Ministry of Education. Established by <strong>Mrs. Khruawan Valliphakorn</strong> under the Private School Act, license no. 6/2523 dated May 22, 1980. It initially opened on 2.5 acres, teaching from pre-elementary to Grade 6, with a capacity of 450 students.",
-                hist2: "Currently, under the management of <strong>Mrs. Jintana Lavitarangsima</strong> (Licensee & Manager) and <strong>Ms. Piyanuch Dankul</strong> (School Director), the school has expanded to <strong>5 acres (13 Rai)</strong> with 5 school buildings and 2 multi-purpose buildings, teaching from Early Childhood to Grade 9, accommodating up to 1,680 students.",
+                yellowMeaning: "Represents elegance, wisdom, and morality",
+                addrTitle: "Location",
+                addrDetail: "162/5 Moo 14, Ruenjit Road, Sikhio Subdistrict, <br> Sikhio District, Nakhon Ratchasima 30140",
+                addrTagline: "A warm learning community in the heart of Sikhio",
+                histTitle: "Brief History",
+                histP1: "<strong>Prasarnwittaya School</strong> is a private general education school under the Office of the Private Education Commission, Ministry of Education. It was established by <strong>Mrs. Khruawan Valliphakorn</strong> under the Private School Act, License No. 6/2523, on May 22, 1980. Originally occupying 1 acre of land, it taught from pre-elementary to Grade 6, with an initial capacity of 450 students.",
+                histP2: "Currently, Prasarnwittaya School is managed by <strong>Mrs. Jintana Lavitarangsima</strong> (Licensee & Manager) and <strong>Ms. Piyanuch Dankul</strong> (School Director). It provides education from early childhood to Grade 9, with a capacity of 1,680 students, covering 5 acres of land with 5 school buildings and 2 multi-purpose buildings.",
                 facTitle: "Learning Resources & Laboratories",
-                facs: ["Language Lab", "Science Lab", "Computer Lab", "Swimming Pool", "Music Room", "Library", "Art/Dance Room", "Ethics Room"],
-                awardText: "Recipient of the Royal Award for Pre-Elementary School (Large Size)",
-                footerTitle: "Student Council of Prasarnwittaya School Academic Year 2024",
-                footerMottoAddr: '"Excellence, Discipline, Morality, Development" <br> 162/5 Moo 14, Sikhio, Nakhon Ratchasima 30140'
+                facs: ["Language Lab", "Science Lab", "Computer Lab", "Swimming Pool", "Thai-Western Music", "Library", "Art/Dance Room", "Ethics Room"],
+                award: "Recipient of the Royal Award for Pre-Elementary Level (Large Size)",
+                footerHead: "Student Council Board of Prasarnwittaya School Academic Year 2024",
+                footerAddr: '"Academic Excellence, Discipline, Morality, Development" <br> 162/5 Moo 14, Sikhio, Sikhio District, Nakhon Ratchasima 30140'
             },
             zh: {
-                navTitle: "2024学年 普拉桑威塔亚学校 学生会委员会",
+                navTitle: "2024 学年 普拉桑威塔亚学校 学生会委员会",
                 navBack: "返回",
                 navInfoTag: "学校信息",
                 heroBadge: "学校信息",
-                heroTitle: "普拉桑威塔亚学校",
-                heroMotto: '"学习优异，纪律严明，道德高尚，引领发展"',
-                heroAbbrLabel: "缩写",
+                heroName: "普拉桑威塔亚学校",
+                heroMotto: '"学业卓越、纪律严明、追求道德、引领发展"',
+                heroAbbrText: "缩写",
                 heroAbbrVal: "P.W.",
-                identTitle: "学校标识与颜色",
+                identTitle: "身份与校色",
                 blueLabel: "蓝色",
-                blueDesc: "象征信心与和平",
+                blueMeaning: "代表信心与和平",
                 yellowLabel: "黄色",
-                yellowDesc: "象征优雅、智慧与道德",
-                locTitle: "学校位置",
-                locAddress: "162/5 Moo 14, Ruenjit Road, Sikhio Subdistrict <br> Sikhio District, Nakhon Ratchasima 30140",
-                locSub: "四球县中心温馨的学习社区",
-                histTitle: "学校简史",
-                hist1: "<strong>普拉桑威塔亚学校</strong>是隶属于教育部门户民办教育委员会办公室的一所民办普通教育学校。由 <strong>Khruawan Valliphakorn 女士</strong>根据《民办学校法》于1980年5月22日创办（许可证号 6/2523）。最初占地2.5英亩，提供从学前教育到小学六年级的教学，初始学生容量为450人。",
-                hist2: "目前，在 <strong>Jintana Lavitarangsima 女士</strong>（许可证持有者兼经理）和 <strong>Piyanuch Dankul 女士</strong>（校长）的管理下，学校已扩大到<strong>5.2英亩（13 Rai）</strong>，拥有5栋教学楼和2栋多功能建筑，提供从幼儿期到初中三年级的教育，最高可容纳1,680名学生。",
+                yellowMeaning: "代表优雅、智慧与道德",
+                addrTitle: "学校地点",
+                addrDetail: "162/5 Moo 14, Ruenjit Road, Sikhio Subdistrict, <br> Sikhio District, Nakhon Ratchasima 30140",
+                addrTagline: "四球县中心的温馨学习社区",
+                histTitle: "校史简介",
+                histP1: "<strong>普拉桑威塔亚学校</strong>是隶属于教育部私立教育委员会办公室的一所私立普通教育学校。由 <strong>Khruawan Valliphakorn 女士</strong>根据《私立学校法》于1980年5月22日创办（许可证号 6/2523）。最初占地约1英亩，提供从学前教育到小学六年级的教学，初始容量为450名学生。",
+                histP2: "目前，普拉桑威塔亚学校由 <strong>Jintana Lavitarangsima 女士</strong>（许可证持有人及经理）和 <strong>Piyanuch Dankul 女士</strong>（校长）管理。提供从学前到初中三年级的教育，容量为1,680名学生，占地约5英亩，拥有5栋教学楼和2栋多功能建筑。",
                 facTitle: "学习资源与实验室",
-                facs: ["语言实验室", "科学实验室", "电脑实验室", "游泳池", "音乐教室", "图书馆", "艺术/舞蹈室", "伦理教室"],
-                awardText: "荣获皇家颁发的学前教育（大型）奖项",
-                footerTitle: "2024学年 普拉桑威塔亚学校 学生会委员会",
-                footerMottoAddr: '"学习优异，纪律严明，道德高尚，引领发展" <br> 162/5 Moo 14, Sikhio, Nakhon Ratchasima 30140'
+                facs: ["语言实验室", "科学实验室", "电脑实验室", "游泳池", "泰式与西洋乐器", "图书馆", "美术与舞蹈室", "伦理室"],
+                award: "荣获皇家颁发的学前教育（大型）奖项",
+                footerHead: "2024 学年 普拉桑威塔亚学校 学生会委员会",
+                footerAddr: '"学业卓越、纪律严明、追求道德、引领发展" <br> 162/5 Moo 14, Sikhio, Sikhio District, Nakhon Ratchasima 30140'
             }
         };
 
@@ -288,61 +293,71 @@
             "fas fa-pray text-orange-500"
         ];
 
-        function changeLang(lang) {
-            const data = translations[lang];
-            
-            // Text Content Updates
-            document.getElementById('nav-title').innerText = data.navTitle;
-            document.getElementById('nav-back').innerText = data.navBack;
-            document.getElementById('nav-info-tag').innerText = data.navInfoTag;
-            document.getElementById('hero-badge').innerText = data.heroBadge;
-            document.getElementById('hero-title').innerText = data.heroTitle;
-            document.getElementById('hero-motto').innerText = data.heroMotto;
-            document.getElementById('hero-abbr-label').innerText = data.heroAbbrLabel;
-            document.getElementById('hero-abbr-val').innerText = data.heroAbbrVal;
-            document.getElementById('ident-title').innerHTML = `<i class="fas fa-flag text-school-yellow"></i> ${data.identTitle}`;
-            document.getElementById('blue-label').innerText = data.blueLabel;
-            document.getElementById('blue-desc').innerText = data.blueDesc;
-            document.getElementById('yellow-label').innerText = data.yellowLabel;
-            document.getElementById('yellow-desc').innerText = data.yellowDesc;
-            document.getElementById('loc-title').innerHTML = `<i class="fas fa-map-marked-alt text-school-blue"></i> ${data.locTitle}`;
-            document.getElementById('loc-address').innerHTML = data.locAddress;
-            document.getElementById('loc-sub').innerHTML = `<i class="fas fa-school"></i> ${data.locSub}`;
-            document.getElementById('hist-title').innerText = data.histTitle;
-            document.getElementById('fac-title').innerText = data.facTitle;
-            document.getElementById('award-text').innerHTML = `<i class="fas fa-medal mr-2"></i> ${data.awardText}`;
-            document.getElementById('footer-title').innerText = data.footerTitle;
-            document.getElementById('footer-motto-addr').innerHTML = data.footerMottoAddr;
+        function switchLanguage(lang) {
+            const t = translations[lang];
 
-            // History Paragraphs
+            // Navbar
+            document.getElementById('nav-title').innerText = t.navTitle;
+            document.getElementById('nav-back').innerText = t.navBack;
+            document.getElementById('nav-info-tag').innerText = t.navInfoTag;
+
+            // Hero
+            document.getElementById('hero-badge').innerText = t.heroBadge;
+            document.getElementById('hero-name').innerText = t.heroName;
+            document.getElementById('hero-motto').innerText = t.heroMotto;
+            document.getElementById('hero-abbr-text').innerText = t.heroAbbrText;
+            document.getElementById('hero-abbr-val').innerText = t.heroAbbrVal;
+
+            // Identity
+            document.getElementById('ident-title').innerHTML = `<i class="fas fa-flag text-school-yellow"></i> ${t.identTitle}`;
+            document.getElementById('blue-label').innerText = t.blueLabel;
+            document.getElementById('blue-meaning').innerText = t.blueMeaning;
+            document.getElementById('yellow-label').innerText = t.yellowLabel;
+            document.getElementById('yellow-meaning').innerText = t.yellowMeaning;
+
+            // Address
+            document.getElementById('addr-title').innerHTML = `<i class="fas fa-map-marked-alt text-school-blue"></i> ${t.addrTitle}`;
+            document.getElementById('addr-detail').innerHTML = t.addrDetail;
+            document.getElementById('addr-tagline').innerHTML = `<i class="fas fa-school"></i> ${t.addrTagline}`;
+
+            // History
+            document.getElementById('hist-title').innerText = t.histTitle;
             document.getElementById('hist-content').innerHTML = `
                 <div class="info-card p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <p>${data.hist1}</p>
+                    <p>${t.histP1}</p>
                 </div>
                 <div class="info-card p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <p>${data.hist2}</p>
+                    <p>${t.histP2}</p>
                 </div>
             `;
 
-            // Facilities Grid
-            let facHtml = '';
-            data.facs.forEach((name, index) => {
-                facHtml += `
-                    <div class="p-4 bg-slate-50 rounded-xl text-center border border-slate-100">
+            // Facilities
+            document.getElementById('fac-title').innerText = t.facTitle;
+            let facGridHtml = '';
+            t.facs.forEach((name, index) => {
+                facGridHtml += `
+                    <div class="p-4 bg-slate-50 rounded-xl text-center border border-slate-100 shadow-sm">
                         <i class="${facIcons[index]} text-2xl mb-2"></i>
                         <p class="text-xs font-bold">${name}</p>
                     </div>
                 `;
             });
-            document.getElementById('fac-grid').innerHTML = facHtml;
+            document.getElementById('fac-grid').innerHTML = facGridHtml;
+            document.getElementById('award-text').innerHTML = `<i class="fas fa-medal mr-2"></i> ${t.award}`;
 
-            // Update Active Button
+            // Footer
+            document.getElementById('footer-head').innerText = t.footerHead;
+            document.getElementById('footer-addr').innerHTML = t.footerAddr;
+
+            // Buttons state
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
         }
 
-        // Initialize with Thai
-        window.onload = () => changeLang('th');
+        // Initialize with default Thai
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('th');
+        });
     </script>
 
 </body>
