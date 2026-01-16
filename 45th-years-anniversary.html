@@ -144,19 +144,11 @@
 </head>
 <body class="min-h-screen">
 
-        <!-- Persistent Maintenance Banner -->
-    <div class="bg-amber-100 border-b-2 border-amber-300 py-4 px-4 relative z-[200]">
-        <div class="container mx-auto flex items-center gap-4">
-            <div class="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-lg animate-pulse">
-                <i class="fas fa-tools text-sm"></i>
-            </div>
-            <p class="text-amber-950 text-[10px] md:text-sm font-medium leading-relaxed">
-                <span class="font-bold text-amber-700">ประกาศ:</span> ระบบอยู่ในระหว่างการพัฒนา ปรับปรุง และแก้ไขปัญหา เพื่อประสิทธิภาพเว็บไซต์ที่ดีที่สุด ขออภัยในความไม่สะดวก หากผิดพลาดประการใดขึ้นขออภัยมา ณ โอกาสนี้
-                - ปรับปรุง : ปรับปรุงเนื้อหาให้ถูกต้อง
-                - พัฒนา : พัฒนาเว็บไซต์ให้มีความเสถียรและเข้าใจง่ายมากยิ่งขึ้น
-                - แก้ไขปัญหา : แก้ไขหน้าเว็บให้มีความเข้าใจง่าย ลบหน้าเว็บโหลดเนื่องจากอาจเกิดข้อผิดพลาดได้ง่าย / ลบหน้าประกาศแบบป็อปอัพเนื่องจากมีข้อผิดพลาด / BUG FIX
-            </p>
-        </div>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button onclick="changeLang('th')" id="btn-th" class="lang-btn active">TH</button>
+        <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+        <button onclick="changeLang('cn')" id="btn-cn" class="lang-btn">CN</button>
     </div>
 
     <!-- ปุ่ม GO BACK -->
@@ -608,5 +600,193 @@
             </p>
         </div>
     </footer>
+
+    <!-- Translations and Scripts -->
+    <script>
+        const translations = {
+            th: {
+                hero_title: "ครบรอบ 45 ปี โรงเรียนประสารวิทยา",
+                hero_subtitle: "เรียนดี มีวินัย ใฝ่คุณธรรม นำพัฒนาการ",
+                cd_days: "วัน", cd_hours: "ชั่วโมง", cd_mins: "นาที", cd_secs: "วินาที",
+                hl1_title: "วันที่จัดงาน", hl1_val: "วันเสาร์ที่ 17 มกราคม 2569", hl1_loc: "ณ ลานอาคารอเนกประสงค์ โรงเรียนประสารวิทยา",
+                hl2_title: "เวลาเริ่มงาน", hl2_val: "เป็นต้นไป",
+                hl3_title: "คืนสู่เหย้าชาวประสาร", hl3_val: "รีบจองโต๊ะก่อนเต็ม!", hl3_sub: "(จำนวนจำกัดใกล้เต็มแล้ว)",
+                sec_video_title: "วิดีโอแนะนำ & บรรยากาศ",
+                video_h4: "วิดีโอไฮไลท์งาน 45 ปี ประสารวิทยา",
+                fb_h4: "บรรยากาศกิจกรรมจาก Facebook",
+                fb_vid_1: "🎬 บรรยากาศ 1", fb_vid_2: "🎬 บรรยากาศ 2", fb_vid_3: "🎬 บรรยากาศ 3", fb_vid_4: "🎬 บรรยากาศ 4",
+                sec_sched_title: "กำหนดการกิจกรรม",
+                sched_d1_date: "วันศุกร์ที่ 16 มกราคม 2569", sched_d1_text: "พิธีทอดผ้าป่าเพื่อการศึกษา", sched_d1_loc: "ณ ห้องประชุมราชพฤกษ์ โรงเรียนประสารวิทยา",
+                sched_d2_date: "วันเสาร์ที่ 17 มกราคม 2569", sched_d2_text: "งานคืนสู่เหย้าชาวประสาร 45 ปี", sched_d2_sub: "กิจกรรมกินเลี้ยง สังสรรค์ พบปะศิษย์เก่าทุกรุ่น", sched_d2_loc: "ณ ลานอาคารอเนกประสงค์ โรงเรียนประสารวิทยา",
+                sec_news_title: "อัปเดตข่าวสารกิจกรรม",
+                news1_badge: "ข่าวสารสำคัญ #1", news1_title: "พร้อมหรือยัง? ที่จะกลับไปเป็น 'นักเรียน' อีกครั้ง!", news1_sub: "'45 ปี คืนสู่เหย้าชาวประสาร'",
+                news1_body: "<p>ในชีวิตจริงเราอาจจะเติบโตไปไกลตามคอนเซ็ปต์ <span class='font-bold text-blue-800'>'BEYOND THE CLASSROOM'</span> แต่สิ่งหนึ่งที่ไม่เคยเปลี่ยนคือ... <span class='italic'>'ความทรงจำดี ๆ'</span> ในรั้วประสาร</p><p>กลับมาร่วมสร้างรอยยิ้ม เสียงหัวเราะ ให้หัวใจพองโตอีกครั้ง กับบรรยากาศที่อบอุ่นเหมือนวันวาน</p>",
+                news_time_label: "วัน/เวลา", news_price_label: "ราคาโต๊ะจีน", news_price_sub: "(8 ที่นั่ง/โต๊ะ)", news_contact_label: "สนใจจองบัตร/โต๊ะ ติดต่อ:",
+                news2_badge: "ข่าวสารสำคัญ #2", news2_title: "ขอเชิญร่วมเป็นเจ้าภาพ ทอดผ้าป่าเพื่อการศึกษา",
+                news2_body: "เพื่อสมทบทุนจัดซื้อ <span class='font-bold text-blue-900'>อุปกรณ์วงดุริยางค์</span> ส่งเสริมศักยภาพของนักเรียนให้ก้าวสู่ความเป็นเลิศทางดนตรี",
+                donate_label: "ช่องทางการบริจาค", bank_name: "ชื่อบัญชี: โรงเรียนประสารวิทยา", coord_label: "ผู้ประสานงาน:",
+                coord1: "ครูสุภาพร (ครูองุ่น)", coord2: "ครูสุพัชชา (ครูหน่อย)",
+                quote1_body: "'เรียนดี มีวินัย ไฝ่คุณธรรม นำพัฒนาการ ไม่ใช่เพียงแค่คำขวัญหรือปรัชญาที่ดังกึกก้องอยู่ทั่วโรงเรียนเท่านั้นแต่เป็นสิ่งที่โรงเรียนปลูกฝังนักเรียนทุกคนมากว่า 45 ปี'",
+                quote1_author: "— กิตติ เชี่ยวสกุล",
+                dim1_title: "Life Skills & Foundation", dim1_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>ความสุขนำการเรียน:</strong> สร้างทัศนคติที่ดีต่อการมาโรงเรียน</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>สภาพแวดล้อม:</strong> อ้อมกอดที่อบอุ่น (Sense of Belonging)</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>ระเบียบวินัย:</strong> ฝึกฝนผ่านความเข้าใจ</span></li>",
+                dim2_title: "Technology & Innovation", dim2_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>AI & Robotics:</strong> สร้างทักษะปัญญาประดิษฐ์</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>3D Technology:</strong> ออกแบบและสร้างชิ้นงานจริง</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Unplug Coding:</strong> ฝึกตรรกะโดยไม่ใช้คอมฯ</span></li>",
+                dim3_title: "Cognitive & Brain", dim3_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Executive Functions (EF):</strong> ฝึกการวางแผนแก้ปัญหา</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>STEMs:</strong> บูรณาการวิทย์-คณิต พัฒนากลไกการคิด</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>จินตคณิต & ศิลปะ:</strong> สมดุลสมองซีกซ้ายและขวา</span></li>",
+                dim4_title: "Communication & Social", dim4_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Natural Learning:</strong> ภาษาที่เป็นธรรมชาติ สร้างความมั่นใจ</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Active Listening:</strong> ฝึกการฟังและแบ่งปัน</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Social Skill:</strong> การอยู่ร่วมกันในสังคมอย่างมีความสุข</span></li>",
+                dim5_title: "Physical & Habits", dim5_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Physical:</strong> พัฒนาการเคลื่อนไหวที่แข็งแรง</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Reading Habit:</strong> ปลูกฝังนิสัยรักการอ่านตลอดชีวิต</span></li>",
+                dim_summary_title: "บทสรุป 45 ปี", dim_summary_body: "มุ่งสร้างเด็กที่มีความพร้อมทั้ง 'ความรู้' และ 'ความสุข' เพื่อเติบโตไปเป็นส่วนหนึ่งของสังคมที่สดใสได้อย่างมั่นคง",
+                faq_title: "คำถามที่พบบ่อย (Q&A)",
+                q1: "โรงเรียนประสารวิทยามีอัตลักษณ์และความโดดเด่นอย่างไร?", a1: "เน้นผสมผสานการเรียนรู้ด้านวิชาการควบคู่กับทักษะชีวิต สอนว่ายน้ำ เสริมทักษะเทคโนโลยี เช่น Coding, 3D Printing, Robotics และเน้นภาษาอังกฤษ-จีน ให้เด็กก้าวทันโลกยุคปัจจุบัน",
+                q2: "โรงเรียนประสารวิทยาเน้นการพัฒนาเด็กในด้านใดบ้าง?", a2: "พัฒนาอย่างรอบด้าน ทั้งร่างกาย อารมณ์ สังคม และสติปัญญา พร้อมเสริมทักษะชีวิต เช่น การช่วยเหลือตัวเอง การเล่นร่วมกับผู้อื่น และการสื่อสารภาษาต่างประเทศอย่างเข้มข้น",
+                q3: "บรรยากาศและสภาพแวดล้อมภายในโรงเรียนเป็นอย่างไร?", a3: "สร้างบรรยากาศที่อบอุ่น มั่นคง ปลอดภัย ให้เด็กรู้สึกเหมือนอยู่บ้าน เพื่อส่งเสริมความสุขและความพร้อมในการเรียนรู้ มีสภาพแวดล้อมที่เอื้อต่อกิจกรรมสร้างสรรค์",
+                q4: "ครูที่โรงเรียนประสารวิทยามีบทบาทอย่างไรในการดูแลเด็ก?", a4: "ทำหน้าที่เป็นโค้ชและพี่เลี้ยงที่ดูแลอย่างใกล้ชิด กระตุ้นการเรียนรู้ เปิดใจรับฟัง และสนับสนุนเด็กตามศักยภาพของแต่ละคน พร้อมเป็นต้นแบบที่ดีสม่ำเสมอ",
+                q5: "โครงการสวนชีวิตชีวาคืออะไรและมีประโยชน์อย่างไร?", a5: "คือแหล่งเรียนรู้เกษตรอินทรีย์ที่เด็กได้ลงมือทำจริง เช่น ปลูกข้าว เลี้ยงปลา ช่วยให้เข้าใจระบบนิเวศและการอยู่ร่วมกับธรรมชาติอย่างยั่งยืนผ่านประสบการณ์ตรง",
+                q6: "โครงการสวนชีวิตชีวาช่วยพัฒนาเด็กอย่างไร?", a6: "ช่วยให้เรียนรู้ผ่านการลงมือทำจริง เห็นกระบวนการตั้งแต่ต้นจนจบ ลดความกลัว เพิ่มความมั่นใจ และปลูกฝังนิสัยรักสิ่งแวดล้อมและการใช้ชีวิตที่ยั่งยืน",
+                q7: "วิสัยทัศน์อย่างไรสำหรับอนาคตของทักเรียน?", a7: "สร้างคนดีที่มีคุณธรรมและวินัยควบคู่กับความเก่ง มีทักษะชีวิตที่พร้อมดูแลตัวเองและครอบครัว เป็นประชากรที่มีคุณภาพ และรักการเรียนรู้ตลอดชีวิต",
+                q8: "การเรียนการสอนในระดับอนุบาลมีลักษณะอย่างไร?", a8: "อาคารเรียนออกแบบให้ใกล้ชิดธรรมชาติ บูรณาการทักษะชีวิตในกิจกรรมประจำวัน เช่น การใส่รองเท้า ทานข้าวเอง เพื่อพัฒนาความเป็นตัวของตัวเองและความพร้อมรอบด้าน",
+                q9: "โรงเรียนมีกิจกรรมส่งเสริมทักษะชีวิตอะไรบ้าง?", a9: "มีทั้งดนตรี กีฬา ฟุตซอล เทคโนโลยี Coding, 3D Printing, Robotics และภาษาอังกฤษ-จีน พร้อมสนับสนุนตามความชอบและความถนัดเฉพาะบุคคล",
+                q10: "ผู้ปกครองควรมั่นใจอะไรเมื่อเลือกที่นี่?", a10: "มั่นใจได้ว่าโรงเรียนมีความพร้อมดูแลเด็กทุกช่วงวัย มีคุณภาพการสอนจากครูมืออาชีพ และประสบการณ์กว่า 45 ปีในการพัฒนาเด็กให้พร้อมสู่สังคมโลก",
+                quote2_body: "“จากเมล็ดข้าวเล็กๆ สู่การเรียนรู้และการเติบโตที่โรงเรียนประสารวิทยาแห่งนี้ ไม่ใช่เพียงแค่สถานที่ที่จะมอบความรู้ให้กับเด็กๆ เท่านั้น แต่สถานที่แห่งนี้จะหล่อมรวมความรู้ คุณธรรม และประสบการณ์ชีวิตเพื่อให้เด็กๆ ทุกคนก้าวสู่อนาคตอย่างมั่นใจ เติบโตอย่างมีความสุข อบอุ่นดั่งครอบครัว มั่นคงดั่งรากไม้ และสวยงามดั่งธรรมชาติครับ”",
+                quote2_author: "— กิตติ เชี่ยวสกุล",
+                footer_sub: "' Beyond The Classroom เรียนรู้อย่างต่อเนื่องจากห้องเรียนสู่โลกกว้าง '",
+                footer_copy: "&copy; 2026 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL <br>ALL RIGHTS RESERVED"
+            },
+            en: {
+                hero_title: "45th Anniversary of Prasarnwittaya School",
+                hero_subtitle: "Good Learning, Discipline, Morality, Leading Development",
+                cd_days: "Days", cd_hours: "Hrs", cd_mins: "Mins", cd_secs: "Secs",
+                hl1_title: "Event Date", hl1_val: "Saturday, January 17, 2026", hl1_loc: "At Multi-purpose Court, Prasarnwittaya School",
+                hl2_title: "Start Time", hl2_val: "Onwards",
+                hl3_title: "Prasarn Reunion", hl3_val: "Book your table now!", hl3_sub: "(Limited seats available)",
+                sec_video_title: "Intro & Atmosphere",
+                video_h4: "45th Anniversary Highlight Video",
+                fb_h4: "Facebook Activities Gallery",
+                fb_vid_1: "🎬 Atmosphere 1", fb_vid_2: "🎬 Atmosphere 2", fb_vid_3: "🎬 Atmosphere 3", fb_vid_4: "🎬 Atmosphere 4",
+                sec_sched_title: "Event Schedule",
+                sched_d1_date: "Friday, Jan 16, 2026", sched_d1_text: "Educational Merit-making Ceremony", sched_d1_loc: "At Ratchapruek Hall, Prasarnwittaya School",
+                sched_d2_date: "Saturday, Jan 17, 2026", sched_d2_text: "45th Anniversary Homecoming Party", sched_d2_sub: "Banquet and Alumni Gathering", sched_d2_loc: "At Multi-purpose Court, Prasarnwittaya School",
+                sec_news_title: "Event News Updates",
+                news1_badge: "IMPORTANT NEWS #1", news1_title: "Ready to be a 'Student' again?", news1_sub: "'45 Years of Prasarn Reunion'",
+                news1_body: "<p>In real life, we may grow far according to the <span class='font-bold text-blue-800'>'BEYOND THE CLASSROOM'</span> concept, but one thing that never changes is... <span class='italic'>'Good Memories'</span> at Prasarn.</p><p>Join us to recreate smiles and laughter once again in an atmosphere warm as before.</p>",
+                news_time_label: "Date/Time", news_price_label: "Chinese Table Price", news_price_sub: "(8 Seats/Table)", news_contact_label: "For booking, contact:",
+                news2_badge: "IMPORTANT NEWS #2", news2_title: "Invitation to Host Educational Phapa",
+                news2_body: "To contribute funds for purchasing <span class='font-bold text-blue-900'>Marching Band Equipment</span> to enhance musical excellence for students.",
+                donate_label: "Donation Channel", bank_name: "Account: Prasarnwittaya School", coord_label: "Coordinators:",
+                coord1: "T. Supaporn (Angun)", coord2: "T. Supatcha (Noi)",
+                quote1_body: "'Excellence in learning, discipline, and morality aren't just slogans; they are values we've instilled in our students for over 45 years.'",
+                quote1_author: "— Kitti Chieosakul",
+                dim1_title: "Life Skills & Foundation", dim1_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Happiness First:</strong> Creating a positive attitude toward school.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Environment:</strong> A warm embrace (Sense of Belonging).</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Discipline:</strong> Training through understanding.</span></li>",
+                dim2_title: "Technology & Innovation", dim2_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>AI & Robotics:</strong> Building artificial intelligence skills.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>3D Technology:</strong> Design and actual creation.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Unplug Coding:</strong> Logic training without computers.</span></li>",
+                dim3_title: "Cognitive & Brain", dim3_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Executive Functions (EF):</strong> Planning and problem-solving skills.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>STEMs:</strong> Integration of Science-Math.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Math & Arts:</strong> Left and right brain balance.</span></li>",
+                dim4_title: "Communication & Social", dim4_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Natural Learning:</strong> Natural language building confidence.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Active Listening:</strong> Practice listening and sharing.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Social Skill:</strong> Living happily in society.</span></li>",
+                dim5_title: "Physical & Habits", dim5_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>Physical:</strong> Healthy movement development.</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>Reading Habit:</strong> Cultivating a lifelong love of reading.</span></li>",
+                dim_summary_title: "45-Year Summary", dim_summary_body: "Aiming to build children with 'Knowledge' and 'Happiness' to grow firmly in society.",
+                faq_title: "Frequently Asked Questions (Q&A)",
+                q1: "What are the unique identities of Prasarnwittaya?", a1: "Integration of academics with life skills, swimming lessons, and tech skills like Coding, 3D Printing, Robotics, and English-Chinese languages.",
+                q2: "What areas of development does the school focus on?", a2: "Holistic development: Physical, Emotional, Social, and Intellectual, alongside life skills like self-help and foreign communication.",
+                q3: "What is the atmosphere and environment like?", a3: "Warm, stable, and safe, making children feel at home to promote happiness and learning readiness.",
+                q4: "What is the role of teachers in caring for children?", a4: "Coaches and mentors who care closely, stimulate learning, listen, and support each child's potential.",
+                q5: "What is the 'Lively Garden' project?", a5: "An organic farming learning center where children practice rice planting and fish farming for direct experience.",
+                q6: "How does the 'Lively Garden' help develop children?", a6: "Direct learning through doing, seeing processes from start to finish, reducing fear, and increasing confidence.",
+                q7: "What is the vision for the students' future?", a7: "Building good people with morality and discipline alongside excellence, ready to care for family as quality citizens.",
+                q8: "What is the kindergarten teaching style?", a8: "Buildings designed close to nature, integrating life skills into daily activities like dressing and eating independently.",
+                q9: "What skill-promoting activities are available?", a9: "Music, sports, futsal, technology (Coding, 3D, Robotics), and English-Chinese, supported by individual interest.",
+                q10: "Why should parents be confident in choosing this school?", a10: "45 years of professional teaching experience in developing children for global society.",
+                quote2_body: "'From a tiny grain of rice to growth at Prasarnwittaya. This is not just a place of knowledge, but a fusion of morality and life experience to lead students to a happy and confident future.'",
+                quote2_author: "— Kitti Chieosakul",
+                footer_sub: "' Beyond The Classroom: Continuous learning from the classroom to the wide world '",
+                footer_copy: "&copy; 2026 STUDENT COUNCIL OF PRASARNWITTAYA SCHOOL <br>ALL RIGHTS RESERVED"
+            },
+            cn: {
+                hero_title: "普萨威塔雅学校成立 45 周年",
+                hero_subtitle: "好学、纪律、道德、引领发展",
+                cd_days: "天", cd_hours: "时", cd_mins: "分", cd_secs: "秒",
+                hl1_title: "活动日期", hl1_val: "2026年1月17日 星期六", hl1_loc: "地点：普萨威塔雅学校 多功能广场",
+                hl2_title: "开始时间", hl2_val: "之后",
+                hl3_title: "校友返校日", hl3_val: "立即预订桌位！", hl3_sub: "(席位有限，预购从速)",
+                sec_video_title: "活动介绍与氛围",
+                video_h4: "45 周年纪念精彩视频",
+                fb_h4: "Facebook 活动画廊",
+                fb_vid_1: "🎬 氛围 1", fb_vid_2: "🎬 氛围 2", fb_vid_3: "🎬 氛围 3", fb_vid_4: "🎬 氛围 4",
+                sec_sched_title: "活动日程",
+                sched_d1_date: "2026年1月16日 周五", sched_d1_text: "教育慈善功德仪式", sched_d1_loc: "地点：普萨威塔雅学校 Ratchapruek 礼堂",
+                sched_d2_date: "2026年1月17日 周六", sched_d2_text: "45 周年校友返校晚宴", sched_d2_sub: "宴会与校友联欢", sched_d2_loc: "地点：普萨威塔雅学校 多功能广场",
+                sec_news_title: "活动新闻动态",
+                news1_badge: "重要新闻 #1", news1_title: "准备好再次成为“学生”了吗？", news1_sub: "“普萨返校 45 载”",
+                news1_body: "<p>在现实生活中，我们可能按照<span class='font-bold text-blue-800'>“超越课堂”</span>的概念走得很远，但有一件事永远不会改变……那就是在普萨的<span class='italic'>“美好回忆”</span>。</p><p>欢迎加入我们，在温馨如初的氛围中再次重塑微笑与笑声。</p>",
+                news_time_label: "日期/时间", news_price_label: "中式宴会桌价格", news_price_sub: "(每桌 8 位)", news_contact_label: "预订请联系：",
+                news2_badge: "重要新闻 #2", news2_title: "诚邀担任教育慈善仪式主理人",
+                news2_body: "为购买<span class='font-bold text-blue-900'>行进乐队设备</span>筹款，提升学生的音乐造诣。",
+                donate_label: "捐款渠道", bank_name: "账户名称：普萨威塔雅学校", coord_label: "协调员：",
+                coord1: "Supaporn 老师", coord2: "Supatcha 老师",
+                quote1_body: "“优良的学风、严明的纪律、高尚的道德，不仅是响彻校园的口号，更是我们 45 年来根植于每位学生心中的价值观。”",
+                quote1_author: "— Kitti Chieosakul",
+                dim1_title: "生活技能与基础", dim1_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>快乐第一：</strong> 培养积极的入学态度。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>环境：</strong> 温馨的怀抱（归属感）。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>纪律：</strong> 通过理解进行培训。</span></li>",
+                dim2_title: "科技与创新", dim2_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>AI 与机器人：</strong> 培养人工智能技能。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>3D 技术：</strong> 设计与实际创造。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>不插电编程：</strong> 无需电脑的逻辑训练。</span></li>",
+                dim3_title: "认知与大脑", dim3_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>执行功能 (EF)：</strong> 规划与解决问题的技能。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>STEM：</strong> 数理化综合教育。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>心算与艺术：</strong> 左右脑平衡发展。</span></li>",
+                dim4_title: "沟通与社交", dim4_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>自然学习：</strong> 培养自然语言的自信心。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>积极倾听：</strong> 练习倾听与分享。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>社交技能：</strong> 在社会中快乐生活。</span></li>",
+                dim5_title: "体能与习惯", dim5_list: "<li class='flex items-start gap-2'><span>●</span> <span><strong>体能：</strong> 健康的动作发育。</span></li><li class='flex items-start gap-2'><span>●</span> <span><strong>阅读习惯：</strong> 培养终身阅读的热爱。</span></li>",
+                dim_summary_title: "45 年总结", dim_summary_body: "旨在培养拥有“知识”与“快乐”的孩子，使他们在社会中稳步成长。",
+                faq_title: "常见问题 (Q&A)",
+                q1: "普萨威塔雅学校有什么独特的身份？", a1: "将学术与生活技能、游泳课以及编程、3D 打印、机器人技术等科技技能相结合，并强调英中双语教育。",
+                q2: "学校侧重于哪些方面的发展？", a2: "全面发展：包括身体、情感、社交和智力，以及自理和外语交流等生活技能。",
+                q3: "学校的氛围和环境如何？", a3: "温馨、稳定、安全，让孩子们有宾至如归的感觉，从而促进幸福感和学习准备度。",
+                q4: "教师在照顾孩子方面的作用是什么？", a4: "作为教练和导师密切关怀，激发学习兴趣，倾听并支持每个孩子的潜力。",
+                q5: "什么是“生机花园”项目？", a5: "一个有机农业学习中心，孩子们在这里练习种稻和养鱼，获得直接经验。",
+                q6: "“生机花园”如何帮助孩子发展？", a6: "通过实践直接学习，观察从开始到结束的过程，消除恐惧并增加自信。",
+                q7: "对学生未来的愿景是什么？", a7: "培养具有道德和纪律的好人，并拥有卓越的才能，准备好作为优质公民照顾家庭。",
+                q8: "幼儿园的教学风格是什么？", a8: "建筑设计亲近自然，将生活技能（如独立穿衣和进食）融入日常活动中。",
+                q9: "提供哪些技能提升活动？", a9: "音乐、运动、五人制足球、科技（编程、3D、机器人）和英中双语，根据个人兴趣提供支持。",
+                q10: "家长为何应放心选择这所学校？", a10: "拥有 45 年专业的教学经验，致力于培养面向全球社会的孩子。",
+                quote2_body: "“从一粒小小的米到普萨威塔雅学校的茁壮成长。这里不仅是知识的殿堂，更是道德与生活经验的熔炉，指引学生走向幸福与自信的未来。”",
+                quote2_author: "— Kitti Chieosakul",
+                footer_sub: "“超越课堂：从课堂到广阔世界的持续学习”",
+                footer_copy: "&copy; 2026 普萨威塔雅学校学生会 <br>版权所有"
+            }
+        };
+
+        function changeLang(lang) {
+            // Update Active Button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update HTML Lang Attribute
+            document.documentElement.lang = lang;
+
+            // Apply Transitions
+            const elements = document.querySelectorAll('[data-t]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // Original Countdown & AOS Scripts
+        window.onload = function() {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+
+            const targetDate = new Date("January 17, 2026 18:00:00").getTime();
+            const countdownFunction = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days < 10 ? (days < 0 ? "00" : "0" + days) : days;
+                document.getElementById("hours").innerText = hours < 10 ? (hours < 0 ? "00" : "0" + hours) : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? (minutes < 0 ? "00" : "0" + minutes) : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? (seconds < 0 ? "00" : "0" + seconds) : seconds;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").innerHTML = "<h3 class='text-2xl font-bold text-yellow-primary animate-bounce'>Welcome Homecoming Day!</h3>";
+                }
+            }, 1000);
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
