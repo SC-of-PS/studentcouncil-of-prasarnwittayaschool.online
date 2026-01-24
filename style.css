@@ -1,8 +1,1 @@
-html {
-    -webkit-filter: grayscale(70%);
-    filter: grayscale(70%);
-}
 
-**วิธีใช้งาน:**
-1. แปะไว้ในส่วนบนสุดของไฟล์ CSS หลักของคุณ
-2. หรือแปะไว้ภายใต้แท็ก `<style> ... </style>` ในส่วน `<head>` ของหน้า HTML ครับ
