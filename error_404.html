@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ไม่พบหน้านี้ - 404 Error</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow: hidden;
+        }
+        
+        /* สไตล์พื้นหลังเคลื่อนไหวแบบ Gradient */
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            filter: blur(40px);
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        /* เอฟเฟกต์ตัวเลข 404 แบบมีมิติ */
+        .text-404 {
+            font-size: 12rem;
+            line-height: 1;
+            font-weight: 800;
+            background: linear-gradient(to bottom, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+        }
+
+        .float {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* ปุ่มติดต่อขนาดเล็ก */
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            border-radius: 9999px;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.2s;
+            margin-left: 8px;
+        }
+        
+        .btn-contact:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen relative">
+
+    <!-- พื้นหลังเรืองแสง -->
+    <div class="bg-glow"></div>
+
+    <div class="container mx-auto px-6 text-center z-10">
+        <!-- ส่วนหัวข้อตัวเลข -->
+        <div class="relative inline-block mb-4">
+            <h1 class="text-404 float select-none">404</h1>
+            <div class="absolute -bottom-2 left-0 w-full h-2 bg-blue-600 blur-xl opacity-50"></div>
+        </div>
+
+        <!-- ข้อความแจ้งเตือน -->
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+            ขออภัย ระบบไม่พบหน้าเว็บไซต์
+        </h2>
+        
+        <p class="text-gray-400 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+            หน้าเว็บที่คุณพยายามเข้าถึงอาจกำลังปรับปรุงและไม่มีอยู่ <br class="hidden md:block"> 
+            กรุณาลองอีกครั้ง
+        </p>
+
+        <!-- ปุ่มควบคุม -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="window.location.reload()" class="btn-gradient w-full sm:w-auto px-12 py-4 text-white font-semibold rounded-2xl shadow-lg transition duration-300 text-center">
+                รีเฟรซ
+            </button>
+        </div>
+
+        <!-- ฟุตเตอร์ -->
+        <div class="mt-20 pt-10 border-t border-slate-800/50 flex flex-col items-center gap-2">
+            <div class="flex items-center flex-wrap justify-center">
+                <p class="text-slate-500 text-sm italic">
+                    หากพบปัญหาในการใช้งาน กรุณาแจ้งผู้ดูแลระบบ
+                </p>
+                <a href="contact.html" class="btn-contact">
+                    ติดต่อเรา
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ตกแต่งเพิ่มเติมด้วยจุดละออง -->
+    <div class="absolute top-20 left-10 w-2 h-2 bg-blue-500 rounded-full blur-sm opacity-20"></div>
+    <div class="absolute bottom-40 right-20 w-3 h-3 bg-blue-400 rounded-full blur-sm opacity-20"></div>
+    <div class="absolute top-1/2 left-20 w-1 h-1 bg-white rounded-full opacity-10"></div>
+
+</body>
+</html>
